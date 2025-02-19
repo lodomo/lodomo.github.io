@@ -1,6 +1,6 @@
 ```
 Lorenzo D. Moon
-Instructor: Catarina Paun
+Instructor: Caterina Paun
 CS-463 Web Development
 [DATE TODO]
 ```
