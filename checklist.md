@@ -1,5 +1,9 @@
 # Checklist for Final Project
 
+## Checks
+- [ ] Prettier on all files
+- [ ] WAVE check on all pages
+
 ## Project Description
 - [ ] Nav Bar
     - [ ] Styled Consistently
