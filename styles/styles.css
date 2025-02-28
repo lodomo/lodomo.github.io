@@ -1,2 +1,60 @@
 :root {
+  --white: #f2f2f0;
+  --muted-green: #abc7aa;
+  --muted-blue: #7597ae;
+  --dark: #23213d;
+
+  --bs-body-bg: var(--muted-green);
+  --bs-body-color: white;
+  --bs-bg-dark: var(--dark);
+  --bs-dark-rgb: 35, 33, 61;
+  --bs-nav-link-color: var(--white);
 }
+
+/* Overridable Bootstrap Variables */
+--bs-body-color
+--bs-body-bg
+--bs-emphasis-color
+--bs-border-color
+
+--bs-primary-color
+--bs-primary-bg-subtle
+--bs-primary-border-subtle
+
+--bs-secondary-color
+--bs-secondary-bg
+
+--bs-tertiary-color
+--bs-tertiary-bg
+
+--bs-success-color
+--bs-success-bg-subtle
+--bs-success-border-subtle
+--bs-succces-text-emphasis
+
+--bs-danger-color
+--bs-danger-bg-subtle
+--bs-danger-border-subtle
+--bs-danger-text-emphasis
+
+--bs-warning-color
+--bs-warning-bg-subtle
+--bs-warning-border-subtle
+--bs-warning-text-emphasis
+
+--bs-info-color
+--bs-info-bg-subtle
+--bs-info-border-subtle
+--bs-info-text-emphasis
+
+--bs-light-color
+--bs-light-bg
+--bs-light-border-subtle
+--bs-light-text-emphasis
+
+--bs-dark-color
+--bs-dark-bg
+--bs-dark-border-subtle
+--bs-dark-text-emphasis
+*/
+

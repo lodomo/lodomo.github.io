@@ -29,9 +29,8 @@ branch called "old" in the repository so you can see what code I'm starting from
 ### February 27th, 2025
 
 I've created the basic structure of the site. I've added a header, a footer, and
-a main section. I added bootstrap to the project, I downloaded the files instead
-of linking them to prevent updates from breaking my site. I've also added an
-empty stylesheet and "main.js" file.
+a main section. I added bootstrap to the project, and made a blank css and js 
+file. I added the "favicon.svg" that I designed myself.
 
 I really want the site to be "juicy" when you scroll, I'm doing some planning
 on how to make that happen.
