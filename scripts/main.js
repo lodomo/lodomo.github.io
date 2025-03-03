@@ -3,14 +3,15 @@ const main = () => {
   const sections = [
     "Home",
     "About",
-    "Previous Work",
+    "PreviousWork",
     "Projects",
     "Contact",
   ];
+  const branding_image_2x = "assets/branding-2x.png";
 
   document.title = title;
   renderHeader(sections, title);
-  renderMain();
+  renderMain(sections);
   renderFooter();
 };
 
@@ -26,7 +27,9 @@ const renderHeader = (sections, title) => {
  * Sections id's are "section-nameinlowercase"
  */
 const renderNavbar = (header, title_text, sections) => {
-  const navbar = elementAsChild(header, "nav", [
+  const branding_image_1x = "assets/branding-1x.png";
+  const branding_w_logo = "assets/branding-w-logo.png";
+  const navbar = createElement(header, "nav", [
     "navbar",
     "navbar-expand-md",
     "sticky-top",
@@ -35,40 +38,46 @@ const renderNavbar = (header, title_text, sections) => {
     "p-3",
   ]);
 
-  const navbarSubContainer = elementAsChild(navbar, "div", ["container"]);
+  const navbarSubContainer = createElement(navbar, "div", ["container"]);
 
 
-  const brand = elementAsChild(navbarSubContainer, "a", ["navbar-brand"], title_text);
+  const brand = createElement(navbarSubContainer, "a", ["navbar-brand"]);
   brand.href = "#";
+  brand_img = createElement(brand, "img", ["branding"]);
+  brand_img.alt = title_text;
+  brand_img.src = branding_w_logo;
+  brand_img.width = 162;
+  brand_img.height = 37;
 
-  const toggler = elementAsChild(navbarSubContainer, "button", ["navbar-toggler"]);
+  const toggler = createElement(navbarSubContainer, "button", ["navbar-toggler"]);
   toggler.dataset.bsToggle = "collapse";
   toggler.dataset.bsTarget = "#navbarSupportedContent";
   toggler.alt = "Toggle Navigation";
   toggler.ariaLabel = "Toggle Navigation";
 
   // Toggler Icon
-  elementAsChild(toggler, "span", ["navbar-toggler-icon"]);
+  createElement(toggler, "span", ["navbar-toggler-icon"]);
 
-  const collapse = elementAsChild(navbarSubContainer, "div", [
+  const collapse = createElement(navbarSubContainer, "div", [
     "collapse",
     "navbar-collapse",
   ]);
   collapse.id = "navbarSupportedContent";
 
-  const list = elementAsChild(collapse, "ul", ["navbar-nav", "mr-auto"]);
+  const list = createElement(collapse, "ul", ["navbar-nav", "mr-auto"]);
 
   sections.forEach((item) => {
-    const listItem = elementAsChild(list, "li", ["nav-item"]);
+    const listItem = createElement(list, "li", ["nav-item"]);
     listItem.id = item.toLowerCase() + "-nav";
-    const link = elementAsChild(listItem, "a", ["nav-link"], item);
+    const link = createElement(listItem, "a", ["nav-link"], item);
     link.href = "#" + item.toLowerCase();
   });
 };
 
 
-const renderMain = () => {
+const renderMain = (sections) => {
   const main = document.getElementById('main');
+  sectionGenerator(main, sections);
 };
 
 const renderFooter = () => {
@@ -82,12 +91,33 @@ const renderFooter = () => {
  * You can optionally add classes and text to the element.
  * Adding text is only for buttons and anchors.
  */
-const elementAsChild = (parent, type, classes = [], text = "") => {
+const createElement = (parent, type, classes = [], text = "") => {
   const element = document.createElement(type);
   parent.appendChild(element);
   if (classes.length) element.classList.add(...classes);
   if (text) element.textContent = text;
   return element;
+};
+
+/*
+ * Generates the sections into the DOM.
+ * Sections id's are "section-nameinlowercase"
+ * Each section has an h2 heading and a div for content.
+ * The content div id is "section-nameinlowercase-content"
+ */
+const sectionGenerator = (app, arr) => {
+  arr.forEach((item) => {
+    const row = createElement(app, "section", ["row"]);
+    row.id = item.toLowerCase() + "-section";
+    const heading = createElement(row, "h2", ["text-center"]);
+    heading.textContent = item;
+
+    // Section Content
+    const contentid = row.id + "-content";
+    const content = createElement(row, "div", ["row", contentid]);
+    content.id = contentid;
+    createElement(app, "hr");
+  });
 };
 
 main();
