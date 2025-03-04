@@ -1,12 +1,6 @@
 const main = () => {
   const title = "lodomo.dev";
-  const sections = [
-    "Home",
-    "About",
-    "PreviousWork",
-    "Projects",
-    "Contact",
-  ];
+  const sections = ["Home", "About", "Previous Work", "Projects", "Contact"];
   const branding_image_2x = "assets/branding-2x.png";
 
   document.title = title;
@@ -15,9 +9,8 @@ const main = () => {
   renderFooter();
 };
 
-
 const renderHeader = (sections, title) => {
-  const header = document.getElementById('header');
+  const header = document.getElementById("header");
   console.log(sections);
   renderNavbar(header, title, sections);
 };
@@ -27,12 +20,11 @@ const renderHeader = (sections, title) => {
  * Sections id's are "section-nameinlowercase"
  */
 const renderNavbar = (header, title_text, sections) => {
-  const branding_image_1x = "assets/branding-1x.png";
   const branding_w_logo = "assets/branding-w-logo.png";
   const navbar = createElement(header, "nav", [
     "navbar",
     "navbar-expand-md",
-    "sticky-top",
+    "fixed-top",
     "navbar-dark",
     "bg-dark",
     "p-3",
@@ -40,16 +32,17 @@ const renderNavbar = (header, title_text, sections) => {
 
   const navbarSubContainer = createElement(navbar, "div", ["container"]);
 
-
   const brand = createElement(navbarSubContainer, "a", ["navbar-brand"]);
   brand.href = "#";
   brand_img = createElement(brand, "img", ["branding"]);
   brand_img.alt = title_text;
   brand_img.src = branding_w_logo;
-  brand_img.width = 162;
+  brand_img.width = 160;
   brand_img.height = 37;
 
-  const toggler = createElement(navbarSubContainer, "button", ["navbar-toggler"]);
+  const toggler = createElement(navbarSubContainer, "button", [
+    "navbar-toggler",
+  ]);
   toggler.dataset.bsToggle = "collapse";
   toggler.dataset.bsTarget = "#navbarSupportedContent";
   toggler.alt = "Toggle Navigation";
@@ -70,18 +63,33 @@ const renderNavbar = (header, title_text, sections) => {
     const listItem = createElement(list, "li", ["nav-item"]);
     listItem.id = item.toLowerCase() + "-nav";
     const link = createElement(listItem, "a", ["nav-link"], item);
-    link.href = "#" + item.toLowerCase();
+    let href = item.toLowerCase();
+    href = href.replace(/\s+/g, "-"); // Fixes the issue with "Previous Work"
+    link.href = "#" + href;
   });
 };
 
-
 const renderMain = (sections) => {
-  const main = document.getElementById('main');
-  sectionGenerator(main, sections);
+  const main = document.getElementById("main");
+  main.classList.add("container-fluid");
+  renderHome(main);
+};
+
+const renderHome = (main) => {
+  const homeContainer = createElement(main, "div", ["row"]);
+  const home = createElement(homeContainer, "div", [
+    "jumbotron",
+    "jumbotron-fluid",
+    "vh-100",
+    "home",
+    "black",
+  ]);
+
+  const h1 = createElement(home, "h1", [], "Welcome to Lodomo.Dev");
 };
 
 const renderFooter = () => {
-  const footer = document.getElementById('footer');
+  const footer = document.getElementById("footer");
 };
 
 /*********** Helper Functions ***********/
@@ -104,7 +112,6 @@ const createElement = (parent, type, classes = [], text = "") => {
  * Sections id's are "section-nameinlowercase"
  * Each section has an h2 heading and a div for content.
  * The content div id is "section-nameinlowercase-content"
- */
 const sectionGenerator = (app, arr) => {
   arr.forEach((item) => {
     const row = createElement(app, "section", ["row"]);
@@ -119,5 +126,6 @@ const sectionGenerator = (app, arr) => {
     createElement(app, "hr");
   });
 };
+ */
 
 main();

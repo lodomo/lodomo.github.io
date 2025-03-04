@@ -11,6 +11,8 @@
   --bs-bg-dark: var(--dark);
   --bs-dark-rgb: 35, 33, 61;
   --bs-nav-link-color: var(--white);
+
+  --checker-size: 5rem;
 }
 
 body {
@@ -18,7 +20,30 @@ body {
   font-size: 1.5em;
 }
 
-/* Overridable Bootstrap Variables */
+/* For the non-visually impaired, the h1 is not needed.
+* This preserves the h1 for screen reader purposes */
+h1 {
+  font-size: 0px;
+}
+
+.home {
+  background-image: url("../assets/light-checkerboard.svg");
+  background-repeat: repeat;
+  background-size: var(--checker-size);
+  animation: moveBackground 8s linear infinite;
+}
+
+/* Animate background to move down and right forever */
+@keyframes moveBackground {
+  0% {
+    background-position: var(--checker-size) calc(-1 * var(--checker-size));
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Overridable Bootstrap Variables
 --bs-body-color
 --bs-body-bg
 --bs-emphasis-color
@@ -64,4 +89,3 @@ body {
 --bs-dark-border-subtle
 --bs-dark-text-emphasis
 */
-
