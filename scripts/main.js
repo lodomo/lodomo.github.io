@@ -1,83 +1,114 @@
-const main = () => {
+/*
+ * Render the content of the website
+ * return {void}
+ */
+function main() {
   const title = "lodomo.dev";
   const sections = ["Home", "About", "Previous Work", "Projects", "Contact"];
-  const branding_image_2x = "assets/branding-2x.png";
-
   document.title = title;
   renderHeader(sections, title);
-  renderMain(sections);
-  renderFooter();
-};
-
-const renderHeader = (sections, title) => {
-  const header = document.getElementById("header");
-  console.log(sections);
-  renderNavbar(header, title, sections);
-};
+  renderMain(sections, title);
+  renderFooter(title);
+}
 
 /*
- * Render the navbar with the title and sections.
- * Sections id's are "section-nameinlowercase"
+ * Render the header of the website.
+ * Currently only renders the navbar.
+ * There may be more content in the future.
+ * return {void}
  */
-const renderNavbar = (header, title_text, sections) => {
+function renderHeader(sections, title) {
+  const header = document.getElementById("header");
+  renderNavbar(header, title, sections);
+}
+
+/*
+ * Renders each section of the website.
+ * return {void}
+ */
+function renderMain(sections, title) {
+  const main = document.getElementById("main");
+  main.classList.add("container-fluid");
+  renderHome(main, title);
+  renderHome(main, title);
+}
+
+/*
+ * Renders the footer of the website.
+ * return {void}
+ */
+function renderFooter(title) {}
+
+/*
+ * Renders the navbar of the website.
+ * The navbar is a fixed-top navbar with a logo and a list of sections.
+ *
+ * @param {HTMLElement} header - The header element to append the navbar to.
+ * @param {String} title - The title of the website.
+ * @param {Array} sections - An array of sections to render in the navbar.
+ *
+ * return {void}
+ */
+function renderNavbar(header, title, sections) {
   const branding_w_logo = "assets/branding-w-logo.png";
-  const navbar = createElement(header, "nav", [
+  const navbar = addElement(header, "nav", [
     "navbar",
     "navbar-expand-md",
     "fixed-top",
     "navbar-dark",
     "bg-dark",
-    "p-3",
+    "pr-3",
+    "pl-3",
+    "pt-0",
+    "pb-0",
   ]);
 
-  const navbarSubContainer = createElement(navbar, "div", ["container"]);
-
-  const brand = createElement(navbarSubContainer, "a", ["navbar-brand"]);
+  const navbarSubContainer = addElement(navbar, "div", ["container"]);
+  const brand = addElement(navbarSubContainer, "a", ["navbar-brand"]);
   brand.href = "#";
-  brand_img = createElement(brand, "img", ["branding"]);
-  brand_img.alt = title_text;
-  brand_img.src = branding_w_logo;
-  brand_img.width = 160;
-  brand_img.height = 37;
 
-  const toggler = createElement(navbarSubContainer, "button", [
-    "navbar-toggler",
-  ]);
+  const brandImage = addElement(brand, "img", ["branding-w-logo"]);
+  brandImage.src = branding_w_logo;
+  brandImage.alt = title;
+  brandImage.height = 37;
+  brandImage.width = 160;
+
+  const toggler = addElement(navbarSubContainer, "button", ["navbar-toggler"]);
   toggler.dataset.bsToggle = "collapse";
   toggler.dataset.bsTarget = "#navbarSupportedContent";
   toggler.alt = "Toggle Navigation";
   toggler.ariaLabel = "Toggle Navigation";
 
   // Toggler Icon
-  createElement(toggler, "span", ["navbar-toggler-icon"]);
+  addElement(toggler, "span", ["navbar-toggler-icon"]);
 
-  const collapse = createElement(navbarSubContainer, "div", [
+  const collapse = addElement(navbarSubContainer, "div", [
     "collapse",
     "navbar-collapse",
   ]);
   collapse.id = "navbarSupportedContent";
 
-  const list = createElement(collapse, "ul", ["navbar-nav", "mr-auto"]);
+  const list = addElement(collapse, "ul", ["navbar-nav", "mr-auto"]);
 
   sections.forEach((item) => {
-    const listItem = createElement(list, "li", ["nav-item"]);
+    const listItem = addElement(list, "li", "", ["nav-item"]);
     listItem.id = item.toLowerCase() + "-nav";
-    const link = createElement(listItem, "a", ["nav-link"], item);
+    const link = addElement(listItem, "a", ["nav-link", "h-100"], item);
     let href = item.toLowerCase();
+    link.textContent = item;
     href = href.replace(/\s+/g, "-"); // Fixes the issue with "Previous Work"
     link.href = "#" + href;
   });
-};
+}
 
-const renderMain = (sections) => {
-  const main = document.getElementById("main");
-  main.classList.add("container-fluid");
-  renderHome(main);
-};
-
-const renderHome = (main) => {
-  const homeContainer = createElement(main, "div", ["row"]);
-  const home = createElement(homeContainer, "div", [
+/*
+ * Renders the home section of the website.
+ * return {void}
+ */
+function renderHome(main, title) {
+  const homeRow = addElement(main, "div", ["row", "relative"]);
+  homeRow.id = "home";
+  const home = addElement(homeRow, "div", [
     "jumbotron",
     "jumbotron-fluid",
     "vh-100",
@@ -85,47 +116,23 @@ const renderHome = (main) => {
     "black",
   ]);
 
-  const h1 = createElement(home, "h1", [], "Welcome to Lodomo.Dev");
+  const h1 = addElement(home, "h1", []);
+  h1.ariaLabel = "Welcome to " + title;
+
+  // TODO LOGOS HERE
+
+  // TOGO PORTRAIT HERE
+  const portrait = addElement(home, "img", ["portrait", "pixel-art"]);
+  portrait.src = "assets/pixel_portrait.png";
+  portrait.alt = "A pixel art portrait of Lorenzo. He has glasses, a big red nose, red ears, white hair  gfand a white beard";
 };
 
-const renderFooter = () => {
-  const footer = document.getElementById("footer");
-};
-
-/*********** Helper Functions ***********/
-
-/*
- * Helper function to create an element and append it to a parent.
- * You can optionally add classes and text to the element.
- * Adding text is only for buttons and anchors.
- */
-const createElement = (parent, type, classes = [], text = "") => {
-  const element = document.createElement(type);
+/* Helper Functions */
+function addElement(parent, tag, classes = []) {
+  const element = document.createElement(tag);
+  if (classes) element.classList.add(...classes);
   parent.appendChild(element);
-  if (classes.length) element.classList.add(...classes);
-  if (text) element.textContent = text;
   return element;
-};
-
-/*
- * Generates the sections into the DOM.
- * Sections id's are "section-nameinlowercase"
- * Each section has an h2 heading and a div for content.
- * The content div id is "section-nameinlowercase-content"
-const sectionGenerator = (app, arr) => {
-  arr.forEach((item) => {
-    const row = createElement(app, "section", ["row"]);
-    row.id = item.toLowerCase() + "-section";
-    const heading = createElement(row, "h2", ["text-center"]);
-    heading.textContent = item;
-
-    // Section Content
-    const contentid = row.id + "-content";
-    const content = createElement(row, "div", ["row", contentid]);
-    content.id = contentid;
-    createElement(app, "hr");
-  });
-};
- */
+}
 
 main();

@@ -94,3 +94,18 @@ making calls to the external API to protect the key.
 
 Doing all the design work and then coding it is a lot of work, I hope I have enough
 time to get it all done.
+
+## Switching to Jquery
+### March 4th 2025
+
+Jquery seems pretty powerful for what I want to do, and kinda already does the stuff
+I wrote functions for. I'm going to switch to Jquery to see if I can get this written
+faster and cleaner.
+
+## Actually no.
+### March 5th 2025
+
+I started writing in Jquery and maybe it's a good tool but it totally ruins the readability
+for me, and feels like I'm giving a lot of control over to the library.
+
+I'm going back to writing my own functions so I get a better feel of how things are working.
