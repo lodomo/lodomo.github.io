@@ -109,3 +109,12 @@ I started writing in Jquery and maybe it's a good tool but it totally ruins the 
 for me, and feels like I'm giving a lot of control over to the library.
 
 I'm going back to writing my own functions so I get a better feel of how things are working.
+
+## Progress
+### March 6th 2025
+
+I've got the artwork done for the vertical version of my logo, and setup my profile picture
+to be where I want it. Not good progress today, but it works.
+
+I'm really happy with the scrolling checkerboard pattern. I need to figure out how I'm going
+to do the backgrounds for each section still. A lot more work to do in just 1 week!
