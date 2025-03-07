@@ -5,12 +5,16 @@
   --muted-green: #abc7aa;
   --muted-blue: #7597ae;
   --dark: #23213d;
+  --mid-grey: #76747d;
+  --light-grey: #b9b5c3;
 
   --bs-body-bg: var(--muted-green);
   --bs-body-color: white;
   --bs-bg-dark: var(--dark);
   --bs-dark-rgb: 35, 33, 61;
   --bs-nav-link-color: var(--white);
+
+  --bs-light-bg: var(--muted-blue);
 
   --checker-size: 5rem;
 }
@@ -42,8 +46,29 @@ h1 {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 75vw;
+  width: 50vw;
   height: auto;
+}
+
+.logo-container {
+  position: absolute;
+  top: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.floating-logo {
+  width: 75vw;
+  animation: rotate 5s infinite;
+}
+
+.vertical-logo {
+  display: block;
+}
+
+.horizontal-logo {
+  display: none;
 }
 
 .pixel-art {
@@ -65,11 +90,56 @@ h1 {
   }
 }
 
-@media (min-width: 767px) {
-  .portrait {
-    width: auto;
-    height: 75%;
+/* Rotate back and forth left and right */
+@keyframes rotate {
+  0% {
+    transform: rotate(-10deg);
   }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+@media (min-width: 767px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .portrait {
+    height: 50vh;
+    width: auto;
+  }
+
+  .logo-container {
+    position: absolute;
+    top: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+
+  .vertical-logo {
+    display: none;
+  }
+
+  .horizontal-logo {
+    display: block;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
 
 /* Overridable Bootstrap Variables

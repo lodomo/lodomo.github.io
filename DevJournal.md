@@ -118,3 +118,9 @@ to be where I want it. Not good progress today, but it works.
 
 I'm really happy with the scrolling checkerboard pattern. I need to figure out how I'm going
 to do the backgrounds for each section still. A lot more work to do in just 1 week!
+
+I think I have that "home" section complete. I learned how to make an animation for the
+logo, so it sways back and forth. Really happy with how playful this is coming out.
+
+I got the H1 tag to hide a "welcome to lodomo.dev" message from the visuals, but keep
+it for the screen reader.

@@ -30,14 +30,17 @@ function renderMain(sections, title) {
   const main = document.getElementById("main");
   main.classList.add("container-fluid");
   renderHome(main, title);
-  renderHome(main, title);
+  renderAbout(main);
+  renderPreviousWork(main);
+  renderProjects(main);
+  renderContact(main);
 }
 
 /*
  * Renders the footer of the website.
  * return {void}
  */
-function renderFooter(title) {}
+function renderFooter(title) { }
 
 /*
  * Renders the navbar of the website.
@@ -119,13 +122,75 @@ function renderHome(main, title) {
   const h1 = addElement(home, "h1", []);
   h1.ariaLabel = "Welcome to " + title;
 
-  // TODO LOGOS HERE
+  const logoContainer = addElement(home, "div", ["logo-container"]);
+  const verticalLogo = addElement(logoContainer, "img", [
+    "floating-logo",
+    "vertical-logo",
+  ]);
+  verticalLogo.src = "assets/logo-vertical.png";
+  verticalLogo.alt = "Pixel art logo that says 'Lodomo.Dev'";
 
-  // TOGO PORTRAIT HERE
+  const horizontalLogo = addElement(logoContainer, "img", [
+    "floating-logo",
+    "horizontal-logo",
+  ]);
+  horizontalLogo.src = "assets/logo-horizontal.png";
+  horizontalLogo.alt = "Pixel art logo that says 'Lodomo.Dev'";
+
   const portrait = addElement(home, "img", ["portrait", "pixel-art"]);
   portrait.src = "assets/pixel_portrait.png";
-  portrait.alt = "A pixel art portrait of Lorenzo. He has glasses, a big red nose, red ears, white hair  gfand a white beard";
-};
+  portrait.alt =
+    "A pixel art portrait of Lorenzo. He has glasses, a big red nose, red ears, white hair  gfand a white beard";
+}
+
+function renderAbout(main) {
+  const aboutRow = addElement(main, "div", ["row", "bg-dark"]);
+  aboutRow.id = "about";
+  const about = addElement(aboutRow, "div", []);
+
+  const h1 = addElement(about, "h2", []);
+  h1.textContent = "About";
+
+  const p = addElement(about, "p", []);
+  p.textContent =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
+
+function renderPreviousWork(main) {
+  const previousWorkRow = addElement(main, "div", ["row", "bg-light"]);
+  previousWorkRow.id = "previous-work";
+  const previousWork = addElement(previousWorkRow, "div", []);
+
+  const h1 = addElement(previousWork, "h2", []);
+  h1.textContent = "Previous Work";
+
+  const p = addElement(previousWork, "p", []);
+  p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
+
+function renderProjects(main) {
+  const projectsRow = addElement(main, "div", ["row", "bg-dark"]);
+  projectsRow.id = "projects";
+  const projects = addElement(projectsRow, "div", []);
+
+  const h1 = addElement(projects, "h2", []);
+  h1.textContent = "Projects";
+
+  const p = addElement(projects, "p", []);
+  p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
+
+function renderContact(main) {
+  const contactRow = addElement(main, "div", ["row", "bg-light"]);
+  contactRow.id = "contact";
+  const contact = addElement(contactRow, "div", []);
+
+  const h1 = addElement(contact, "h2", []);
+  h1.textContent = "Contact";
+
+  const p = addElement(contact, "p", []);
+  p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
 
 /* Helper Functions */
 function addElement(parent, tag, classes = []) {
