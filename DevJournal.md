@@ -124,3 +124,16 @@ logo, so it sways back and forth. Really happy with how playful this is coming o
 
 I got the H1 tag to hide a "welcome to lodomo.dev" message from the visuals, but keep
 it for the screen reader.
+
+## Thinks are moving smoothly!
+### March 10th 2025
+
+A lot of stuff done. I forgot to write about it.
+
+1) Logo wiggles on hover in the top right corner.
+2) "Hero" / "Jumbotron" setup, Really happy with it.
+3) Hidden h1 for screen readers perfected.
+4) About / Works / Projects / Contact sections setup.
+5) Footer ready for social buttons, there's not much.
+7) Slowly shifting checker patterns implemented.
+8) Section spacers are OK, I think I want them to be different. 

@@ -28,11 +28,15 @@ function renderHeader(sections, title) {
  */
 function renderMain(sections, title) {
   const main = document.getElementById("main");
-  main.classList.add("container-fluid");
+  main.classList.add("container-fluid", "p-0");
   renderHome(main, title);
+  renderSeperator(main);
   renderAbout(main);
+  renderSeperator(main);
   renderPreviousWork(main);
+  renderSeperator(main);
   renderProjects(main);
+  renderSeperator(main);
   renderContact(main);
 }
 
@@ -40,7 +44,34 @@ function renderMain(sections, title) {
  * Renders the footer of the website.
  * return {void}
  */
-function renderFooter(title) { }
+function renderFooter(title) {
+  const footer = document.getElementById("footer");
+  footer.classList.add(
+    "container-fluid",
+    "p-3",
+    "bg-dark",
+    "text-white",
+    "text-center",
+  );
+  const footerRow = addElement(footer, "div", ["row"]);
+  const spacer = addElement(footerRow, "div", ["col-md-4"]);
+  const socials = addElement(footerRow, "div", ["col-md-4"]);
+
+  const bluesky = addElement(socials, "p", []);
+  bluesky.textContent = "Placeholder";
+
+  const copyright = addElement(footerRow, "div", ["col-md-4"]);
+  const footerImg = addElement(copyright, "img", [
+    "p-0",
+    "m-2",
+  ]);
+  footerImg.src = "assets/footer-logo.png";
+  footerImg.alt = "Pixel art computer logo with katakana ロドモ";
+  footerImg.width = 28;
+  footerImg.height = 35;
+  const p = addElement(copyright, "span", ["p-0", "m-0"]);
+  p.textContent = "© " + 2025 + " " + title;
+}
 
 /*
  * Renders the navbar of the website.
@@ -60,17 +91,17 @@ function renderNavbar(header, title, sections) {
     "fixed-top",
     "navbar-dark",
     "bg-dark",
-    "pr-3",
-    "pl-3",
-    "pt-0",
-    "pb-0",
+    "p-3",
   ]);
 
   const navbarSubContainer = addElement(navbar, "div", ["container"]);
   const brand = addElement(navbarSubContainer, "a", ["navbar-brand"]);
   brand.href = "#";
 
-  const brandImage = addElement(brand, "img", ["branding-w-logo"]);
+  const brandImage = addElement(brand, "img", [
+    "branding-w-logo",
+    "jiggle-hover",
+  ]);
   brandImage.src = branding_w_logo;
   brandImage.alt = title;
   brandImage.height = 37;
@@ -96,12 +127,21 @@ function renderNavbar(header, title, sections) {
   sections.forEach((item) => {
     const listItem = addElement(list, "li", "", ["nav-item"]);
     listItem.id = item.toLowerCase() + "-nav";
-    const link = addElement(listItem, "a", ["nav-link", "h-100"], item);
+    const link = addElement(listItem, "a", ["nav-link", "h-100", "fs-3"], item);
     let href = item.toLowerCase();
     link.textContent = item;
     href = href.replace(/\s+/g, "-"); // Fixes the issue with "Previous Work"
     link.href = "#" + href;
   });
+}
+
+function renderSeperator(main) {
+  const seperatorRow = addElement(main, "div", [
+    "row",
+    "bg-dark",
+    "seperator",
+    "w-100",
+  ]);
 }
 
 /*
@@ -139,57 +179,61 @@ function renderHome(main, title) {
 
   const portrait = addElement(home, "img", ["portrait", "pixel-art"]);
   portrait.src = "assets/pixel_portrait.png";
-  portrait.alt =
-    "A pixel art portrait of Lorenzo. He has glasses, a big red nose, red ears, white hair  gfand a white beard";
+  portrait.alt = "Pixel art portrait of a man with a beard, and glasses.";
 }
 
 function renderAbout(main) {
-  const aboutRow = addElement(main, "div", ["row", "bg-dark"]);
-  aboutRow.id = "about";
-  const about = addElement(aboutRow, "div", []);
+  const section = sectionTemplate(main, "About");
 
-  const h1 = addElement(about, "h2", []);
-  h1.textContent = "About";
-
-  const p = addElement(about, "p", []);
-  p.textContent =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  const p = addElement(section.elem, "p", []);
+  p.textContent = "My bio should go here, I have no idea how to write a bio.";
 }
 
 function renderPreviousWork(main) {
-  const previousWorkRow = addElement(main, "div", ["row", "bg-light"]);
-  previousWorkRow.id = "previous-work";
-  const previousWork = addElement(previousWorkRow, "div", []);
+  const section = sectionTemplate(main, "Previous Work");
 
-  const h1 = addElement(previousWork, "h2", []);
-  h1.textContent = "Previous Work";
-
-  const p = addElement(previousWork, "p", []);
-  p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  const p = addElement(section.elem, "p", []);
+  p.textContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 }
 
 function renderProjects(main) {
-  const projectsRow = addElement(main, "div", ["row", "bg-dark"]);
-  projectsRow.id = "projects";
-  const projects = addElement(projectsRow, "div", []);
+  const section = sectionTemplate(main, "Projects");
 
-  const h1 = addElement(projects, "h2", []);
-  h1.textContent = "Projects";
-
-  const p = addElement(projects, "p", []);
-  p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  const p = addElement(section.elem, "p", []);
+  p.textContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 }
 
 function renderContact(main) {
-  const contactRow = addElement(main, "div", ["row", "bg-light"]);
-  contactRow.id = "contact";
-  const contact = addElement(contactRow, "div", []);
+  const section = sectionTemplate(main, "Contact");
 
-  const h1 = addElement(contact, "h2", []);
-  h1.textContent = "Contact";
+  const p = addElement(section.elem, "p", []);
+  p.textContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+}
 
-  const p = addElement(contact, "p", []);
-  p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+function sectionTemplate(parent, sectionName) {
+  let cssName = sectionName.toLowerCase();
+  cssName = cssName.replace(/\s+/g, "-"); // Fixes the issue with "Previous Work"
+  const container = addElement(parent, "div", [
+    "container-fluid",
+    "p-0",
+    cssName,
+  ]);
+  const row = addElement(container, "div", [
+    "row",
+    "p-3",
+    "container",
+    "mx-auto",
+  ]);
+  row.id = cssName;
+  const elem = addElement(row, "div", []);
+
+  const h2 = addElement(elem, "h2", []);
+  h2.textContent = sectionName;
+
+  return { container, row, elem };
 }
 
 /* Helper Functions */
