@@ -47,6 +47,10 @@ h2 {
   animation: moveBackground 8s linear infinite;
 }
 
+.section-top {
+  scroll-margin-top: 5rem;
+}
+
 .previous-work {
   color: var(--screen-dark);
   background-color: var(--screen-beige);
@@ -108,13 +112,33 @@ h2 {
   -ms-interpolation-mode: nearest-neighbor; /* IE */
 }
 
-.seperator {
-  background-image: url("../assets/border-grey.png");
+.drop-shadow {
+  background-image: url("../assets/shadow-seperator.png");
   background-repeat: repeat-x;
   background-size: 100% 100%;
   margin: 0 auto;
   height: 16px;
+}
 
+.okeska {
+  background-color: var(--dark);
+  border-radius: 0.5rem;
+  border: 3px solid var(--mid-grey);
+  outline: 2px solid var(--white);
+  box-shadow: 0 0 0 6px var(--dark);
+}
+
+.okeska h2 {
+  display: block;
+  margin: 0;
+  font-size: 1em;
+  margin-top: -1.5rem;
+  z-index: 1000;
+}
+
+.heading-bg-dark {
+  padding: 0 0.25rem;
+  background-color: var(--dark);
 }
 
 /* Animate background to move down and right forever */
@@ -182,6 +206,10 @@ h2 {
 
   .horizontal-logo {
     display: block;
+  }
+
+  .section-top {
+    scroll-margin-top: 6rem;
   }
 }
 

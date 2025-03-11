@@ -30,13 +30,9 @@ function renderMain(sections, title) {
   const main = document.getElementById("main");
   main.classList.add("container-fluid", "p-0");
   renderHome(main, title);
-  renderSeperator(main);
   renderAbout(main);
-  renderSeperator(main);
   renderPreviousWork(main);
-  renderSeperator(main);
   renderProjects(main);
-  renderSeperator(main);
   renderContact(main);
 }
 
@@ -57,14 +53,11 @@ function renderFooter(title) {
   const spacer = addElement(footerRow, "div", ["col-md-4"]);
   const socials = addElement(footerRow, "div", ["col-md-4"]);
 
-  const bluesky = addElement(socials, "p", []);
+  const bluesky = addElement(socials, "p");
   bluesky.textContent = "Placeholder";
 
   const copyright = addElement(footerRow, "div", ["col-md-4"]);
-  const footerImg = addElement(copyright, "img", [
-    "p-0",
-    "m-2",
-  ]);
+  const footerImg = addElement(copyright, "img", ["p-0", "m-2"]);
   footerImg.src = "assets/footer-logo.png";
   footerImg.alt = "Pixel art computer logo with katakana ロドモ";
   footerImg.width = 28;
@@ -132,16 +125,16 @@ function renderNavbar(header, title, sections) {
     link.textContent = item;
     href = href.replace(/\s+/g, "-"); // Fixes the issue with "Previous Work"
     link.href = "#" + href;
-  });
-}
 
-function renderSeperator(main) {
-  const seperatorRow = addElement(main, "div", [
-    "row",
-    "bg-dark",
-    "seperator",
-    "w-100",
-  ]);
+    // Found this and altered it from 
+    // https://stackoverflow.com/questions/42401606/how-to-hide-collapsible-bootstrap-navbar-on-click
+    link.addEventListener("click", () => {
+      const navbar = document.querySelector(".navbar-collapse");
+      if (navbar.classList.contains("show")) {
+        bootstrap.Collapse.getInstance(navbar)?.hide();
+      }
+    });
+  });
 }
 
 /*
@@ -159,7 +152,7 @@ function renderHome(main, title) {
     "black",
   ]);
 
-  const h1 = addElement(home, "h1", []);
+  const h1 = addElement(home, "h1");
   h1.ariaLabel = "Welcome to " + title;
 
   const logoContainer = addElement(home, "div", ["logo-container"]);
@@ -184,15 +177,21 @@ function renderHome(main, title) {
 
 function renderAbout(main) {
   const section = sectionTemplate(main, "About");
+  section.container.classList.add("pb-4");
 
-  const p = addElement(section.elem, "p", []);
+  section.row.classList.add("okeska", "mt-4");
+  section.span.classList.add("heading-bg-dark");
+  // section.row
+  // section.elem
+
+  const p = addElement(section.elem, "p");
   p.textContent = "My bio should go here, I have no idea how to write a bio.";
 }
 
 function renderPreviousWork(main) {
   const section = sectionTemplate(main, "Previous Work");
 
-  const p = addElement(section.elem, "p", []);
+  const p = addElement(section.elem, "p");
   p.textContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 }
@@ -200,7 +199,7 @@ function renderPreviousWork(main) {
 function renderProjects(main) {
   const section = sectionTemplate(main, "Projects");
 
-  const p = addElement(section.elem, "p", []);
+  const p = addElement(section.elem, "p");
   p.textContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 }
@@ -208,7 +207,7 @@ function renderProjects(main) {
 function renderContact(main) {
   const section = sectionTemplate(main, "Contact");
 
-  const p = addElement(section.elem, "p", []);
+  const p = addElement(section.elem, "p");
   p.textContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 }
@@ -216,30 +215,40 @@ function renderContact(main) {
 function sectionTemplate(parent, sectionName) {
   let cssName = sectionName.toLowerCase();
   cssName = cssName.replace(/\s+/g, "-"); // Fixes the issue with "Previous Work"
-  const container = addElement(parent, "div", [
+  const container = addElement(parent, "section", [
     "container-fluid",
+    "section",
     "p-0",
     cssName,
+  ]);
+  const seperator = addElement(container, "div", [
+    "container-fluid",
+    "drop-shadow",
   ]);
   const row = addElement(container, "div", [
     "row",
     "p-3",
     "container",
     "mx-auto",
+    "section-top",
   ]);
   row.id = cssName;
-  const elem = addElement(row, "div", []);
 
-  const h2 = addElement(elem, "h2", []);
-  h2.textContent = sectionName;
 
-  return { container, row, elem };
+  const h2 = addElement(row, "h2");
+  const span = addElement(h2, "span");
+  span.textContent = sectionName;
+
+  const elem = addElement(row, "div");
+
+
+  return { h2, span, container, row, elem };
 }
 
 /* Helper Functions */
 function addElement(parent, tag, classes = []) {
   const element = document.createElement(tag);
-  if (classes) element.classList.add(...classes);
+  if (classes.length > 0) element.classList.add(...classes);
   parent.appendChild(element);
   return element;
 }

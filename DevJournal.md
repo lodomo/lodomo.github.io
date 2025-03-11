@@ -137,3 +137,10 @@ A lot of stuff done. I forgot to write about it.
 5) Footer ready for social buttons, there's not much.
 7) Slowly shifting checker patterns implemented.
 8) Section spacers are OK, I think I want them to be different. 
+
+## Okeska Frame
+### March 10th 2025
+
+I added a frame to the text in about, and will probably reuse it for the other sections.
+It's called "Okeska" as a reference to "Earthbound" which was the inspiration for most
+of the sites design (and my design work in general).
