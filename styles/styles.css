@@ -39,6 +39,10 @@ h2 {
   font-weight: 500;
 }
 
+.hide-sm {
+  display: none;
+}
+
 .home,
 .contact {
   background-image: url("../assets/light-checkerboard.svg");
@@ -56,12 +60,22 @@ h2 {
   background-color: var(--screen-beige);
 }
 
+.previous-work-font {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+}
+
 .about,
 .projects {
   background-image: url("../assets/purple-checkerboard.svg");
   background-repeat: repeat;
   background-size: var(--checker-size);
   animation: moveBackground 8s reverse linear infinite;
+}
+
+.work-li {
+  margin-left: 2rem;
+  padding: 0;
 }
 
 .jiggle-hover:hover {
@@ -79,6 +93,7 @@ h2 {
   transform: translateX(-50%);
   width: 50vw;
   height: auto;
+  filter: drop-shadow(0px 0px 20px rgba(35, 33, 61, 1));
 }
 
 .logo-container {
@@ -210,6 +225,10 @@ h2 {
 
   .section-top {
     scroll-margin-top: 6rem;
+  }
+
+  .hide-sm {
+    display: block;
   }
 }
 

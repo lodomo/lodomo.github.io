@@ -144,3 +144,79 @@ A lot of stuff done. I forgot to write about it.
 I added a frame to the text in about, and will probably reuse it for the other sections.
 It's called "Okeska" as a reference to "Earthbound" which was the inspiration for most
 of the sites design (and my design work in general).
+
+## CoPilot is really bad at Javascript
+### March 11th 2025
+
+I've noticed that copilot is generally wrong about what I'm trying to write. 
+It's really frustrating, and I'm not sure if it's because I'm just writing in a different
+style than the norm or what. 
+
+## Previous Work
+### March 11th 2025
+
+Previous work section is complete. I recreated my resume for the web page, and have it format
+change depending on the width. I thought the bullet points were overwhelming so on smaller
+screens it just shows where I worked, and when.
+
+On larger screens there's bullet points for all the things I did at each job.
+
+I pulled a font from the Google Font API for the resume. I don't like using Google products,
+but it works for now.
+
+## Projects
+### March 11th 2025
+
+I'm going to be re-using a lot of the code from the starships cards from the previous
+project. I want to mimic the "about" section text box, where the title covers part of the 
+border. Some projects will be able to play in browser, and/or have source code, so I want
+those buttons to appear if I activate them. The browser based games only work on desktop
+so I need those to be hidden unless they're on a large screen.
+
+All the projects will have an image and description. I need to figure out the layout
+for small screens vs large screens.
+
+I'm imagining:
+
+```plaintext
+Small Screen
+---Title--------
+IMAGE
+IMAGE
+IMAGE
+DESC
+BUTTONS
+----------------
+
+Big Screen
+---Title--------
+IMAGE DESC
+IMAGE DESC
+IMAGE BUTTONS
+----------------
+```
+
+Also, while looking up how to format the data for the projects, I realized I could have
+probably done the same for the previous works section. Ugh. I might have to redo that.
+Right now I'm just worried about it getting done.
+
+So for the projects I have a few functions:
+"renderProjects" that actually puts the projects on the page.
+"projectData" that holds a table of the data for the projects.
+"projectCards" that will take in the project data and create an array of the cards.
+"renderProjects" will then run "projectCards" and set the cards to the page.
+
+## DM API
+### March 11th 2025
+
+In the lecture today, Vercel was mentioned. I decided to test that out to create my 
+API to send me a message with the form. 
+
+First off, the AI bot that makes programs for Vercel is absolute garbage and couldn't 
+create a single thing that worked.
+
+So I guess I'm going to have to do it myself. I decided to go with Flask since
+I'm a little familiar with it. It will be hosted through Vercel. 
+
+I will add in a folder into the github repo with the code used for the API but keep
+the API key in a private repository.
