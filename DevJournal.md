@@ -236,3 +236,20 @@ and it was blasting me with messages. So. That won't work in the submitted versi
 Kinda bummed, I was really excited about that feature.
 "A Bluesky account you control (lodomobo.bsky.social) has had its direct messaging (DM) feature permanently removed due to a violation of our community guidelines. This decision was made based on several risk factors on your account."
 WHOOPS.
+
+## Module - Other
+### Match 12th 2025
+
+I wanted to split my data out from my javascript file. I turned the "main.js" into a module
+and then all the data is going to be in their own .mjs files. 
+
+I'm using this as a guide to figure this out: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+
+I feel like this isn't the best way to do it? but using "fetch" doesn't make sense either since it's all local to the server.
+
+Adding in my games isn't going to be possible, I don't think. I might not have time to get the PDF generator working either. 
+Hopefully these modules, animations, and the jumbotron will be enough learned outside of class.
+
+Also that "vercel" thing was a bust. I'm going to have to figure out how to get the form to work without it.
+
+I've got 2 full days dedicated to this project left, time to get it done.

@@ -143,12 +143,21 @@ h2 {
   box-shadow: 0 0 0 6px var(--dark);
 }
 
-.okeska h2 {
+.okeska h2,
+.okeska h3 {
   display: block;
   margin: 0;
   font-size: 1em;
-  margin-top: -1.5rem;
   z-index: 1000;
+}
+
+.okeska h2 {
+  margin-top: -1.5rem;
+}
+
+.okeska h3 {
+  margin-top: -1rem;
+  margin-left: 1rem;
 }
 
 .heading-bg-dark {

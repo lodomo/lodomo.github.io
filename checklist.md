@@ -23,10 +23,15 @@
 
 - [ ] Beyond the class
     - [ ] learn something outside the class and implement it.
+        - Animated backgrounds
+        - Animated hovers
+        - Jumbotron
+        - Node/Vite to implement a static page.
 
-- [ ] Single Page OR Multi page
+- [x] Single Page OR Multi page
+    - Single page!
 
-- [ ] Public Repository
+- [x] Public Repository
     - https://github.com/lodomo/lodomo.github.io
     - https://lodomo.github.io
 
@@ -36,14 +41,13 @@
     - [ ] Blogs? Tutorials?
     - [ ] How to deploy
 
-- [ ] Bare Bones
-    - [ ] HTML
-    - [ ] CSS
-    - [ ] JavaScript
-    - [ ] Bootstrap
-    - [ ] JQuery
+- [x] Bare Bones
+    - [x] HTML
+    - [x] CSS
+    - [x] JavaScript
+    - [x] Bootstrap
 
-- [ ] Six Meaningful Commits
+- [x] Six Meaningful Commits
 - [ ] Journal
     - [ ] Include all outside sources
 
