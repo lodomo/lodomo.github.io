@@ -9,8 +9,8 @@ export const sections = [
 ];
 
 export const about = [
-  "My bio should go here, I have no idea how to write a bio.",
-  "Testing Line 2",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies.",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies.",
 ];
 
 export const workExperience = [
@@ -80,44 +80,45 @@ export const projects = [
     title: "Escape The Arcade",
     description:
       "The year is 198X, and from the veiled origins of Katana Corp. comes a new gaming frontier—Escape the Arcade. The why and how are shrouded in mystery, but one thing is clear: this is where next-level technology and imagination fuse to create experiences unlike anything you've ever encountered. I was the sole-programmer for anything technical in this project. From the hardware architecture to the software that runs the room, I coded it all.",
-    img: "escapethearcade.png",
+    img: "escape-the-arcade.png",
+    imgAlt: "Neon Sign that says 'Escape The Arcade'",
     visit: "https://www.escapethearcade.com",
   },
   {
     title: "Neon Haven",
     description:
       "The year is 208X. You've just been recruited by the Code Samurai, an elite group of renegades with a mission to dismantle the corrupt RONIN Crime Syndicate. After a major operation, you're tasked with handling the return of your team. But something's wrong. Instead of the five expected Samurai, fifteen figures are at your doorstep, all claiming to be on your side. Can you figure out who is friend, and who is foe? This game requires NO download, NO install, NO registration, NO payment, NO ads, and NO tracking of ANY kind.",
-    img: "neonhaven.png",
-    phone: "+13618801802",
+    img: "neon-haven.png",
+    phone: "3618801802",
   },
   {
     title: "Escape Wright",
     description:
       "An open source initiative to help anyone create complex immersive escape room experience. Currently in development, not ready for use.",
-    img: "escapewright.png",
+    img: "escape-wright.png",
     sourceCode: "https://git.lodomo.dev/escapewright",
   },
   {
     title: "Boulder Mage",
     description:
       "Boulder Mage and the Eternal Nightmare is a proof of concept of a game currently in development by Lodomo.Dev. This game was 2nd place in the LOSPEC LTRO-1 GameJam. I am very proud of this game.",
-    img: "bouldermage.png",
+    img: "boulder-mage.png",
     download: "https://lodomo.itch.io/bouldermagenightmare",
-    playBrowser: "https://lodomo.itch.io/bouldermagenightmare",
+    playBrowser: "https://lospec.com/games/lospec-jam-1",
     sourceCode: "https://git.lodomo.dev/bmaten",
   },
   {
     title: "Don't Eat Poison",
     description:
       "Created for iOS, Android, Linux, and Windows, Don't Eat Poison is a simple game where you are a mindless pig who must avoid eating poison. The trick? He's allergic to a random poison fruit each life. Unlock costumes, compete for high scores, and maybe one day you'll be a merpig. Note: Sorry, this is no longer available on any app store.",
-    img: "donteatpoison.png",
+    img: "dont-eat-poison.png",
     download: "https://lodomo.itch.io/dont-eat-poison",
   },
   {
     title: "Peasants in a Dungeon",
     description:
       "A text based adventure where you're unfairly thrown into a dungeon. Will you escape? Will you die? Will you rob a mouse to save yourself? Who knows!",
-    img: "peasantsinadungeon.png",
+    img: "peasants-in-a-dungeon.png",
     download: "https://lodomo.itch.io/peasants-in-a-dungeon",
     sourceCode: "https://git.lodomo.dev/piad",
   },
@@ -125,7 +126,7 @@ export const projects = [
     title: "Trajectory Oracle",
     description:
       "What if we could figure out where things are going? Trajectory Oracle is an experiment that combines machine learning with YOLO object detection to predict the trajectory of objects in a video. Does it work? Sometimes. Was it fun to make? Absolutely.",
-    img: "trajectoryoracle.png",
+    img: "trajectory-oracle.png",
     sourceCode: "https://git.lodomo.dev/trajorc",
   },
   {
@@ -137,13 +138,13 @@ export const projects = [
   },
   {
     title: "Variable Boot Device",
-    description: "",
-    img: "variablebootdevice.png",
+    description: "This project provides IT professionals with an open-source solution to turn a Raspberry Pi into a fully functional boot device for their custom operating systems while preserving the Pi’s full capabilities. Additionally, it doubles as a portable flash drive, ensuring flexibility and efficiency in system deployment and maintenance.",
+    img: "variable-boot-device.png",
     sourceCode: "https://git.lodomo.dev/vbd",
   },
   {
     title: "Neovim Theme: Orion",
-    description: "",
+    description: "A light-mode low-saturation theme for Neovim / Terminal to help easy eye strain.",
     img: "orion.png",
     sourceCode: "https://git.lodomo.dev/orion",
   },
@@ -151,7 +152,7 @@ export const projects = [
     title: "Messengern",
     description:
       "MERN Stack based chat application. This is a proof of concept for a chat application that uses the MERN stack. It is not intended for production use.",
-    img: "assets/project6.png",
+    img: "messengern.png",
     sourceCode: "https://git.lodomo.dev/mern",
   },
 ];

@@ -253,3 +253,15 @@ Hopefully these modules, animations, and the jumbotron will be enough learned ou
 Also that "vercel" thing was a bust. I'm going to have to figure out how to get the form to work without it.
 
 I've got 2 full days dedicated to this project left, time to get it done.
+
+## NerdFonts!
+### March 12th 2025
+
+Ok I figured out another thing to add that was from outside of the scope of the class.
+I added in "Nerd Fonts" from https://www.nerdfonts.com to get some icons for the buttons. 
+
+I'm going to call the projects section done. It was incredibly frustrating to get the cards to all fill
+the row. I think I finally got it to work. I used https://getbootstrap.com/docs/5.0/utilities/flex/ and a mix
+of ChatGPT to find the right combination of classes, but the buttons don't go to the bottom like how I want them to.
+
+I'm going to call it done for now, and move on to the contact section.

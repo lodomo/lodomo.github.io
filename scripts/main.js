@@ -53,8 +53,10 @@ function renderFooter(title) {
   const spacer = addElement(footerRow, "div", ["col-md-4"]);
   const socials = addElement(footerRow, "div", ["col-md-4"]);
 
-  const bluesky = addElement(socials, "p");
-  bluesky.textContent = "Placeholder";
+  const bluesky = addSocialButton(socials, "https://bsky.app/profile/lodomo.dev", "nf-fae-butterfly");
+  const email = addSocialButton(socials, "mailto:lodomo@lodomo.dev", "nf-md-email");
+  const linkedin = addSocialButton(socials, "https://linkedin.com/in/ldmoon", "nf-dev-linkedin");
+  const github = addSocialButton(socials, "https://github.com/lodomo", "nf-dev-github");
 
   const copyright = addElement(footerRow, "div", ["col-md-4"]);
   const footerImg = addElement(copyright, "img", ["p-0", "m-2"]);
@@ -64,6 +66,16 @@ function renderFooter(title) {
   footerImg.height = 35;
   const p = addElement(copyright, "span", ["p-0", "m-0"]);
   p.textContent = "© " + 2025 + " " + title;
+}
+
+function addSocialButton(parent, href, icon) {
+  const button = addElement(parent, "div", ["socials"]);
+  // const iconElement = addElement("i", ["nf", "m-2", "socials", icon]);
+  const link = addElement(button, "a");
+  link.href = href;
+  link.target = "_blank";
+  link.innerHTML = `<i class="nf m-2 socials ${icon}"></i>`;
+  return;
 }
 
 /*
@@ -204,14 +216,19 @@ function renderPreviousWork(main) {
   document.getElementById("previous-work").classList.add("text-center");
 
   for (let i = 0; i < workExperience.length; i++) {
-    renderWorkExperience(section.elem, workExperience[i]);
+    addWorkExperience(section.elem, workExperience[i]);
     if (i < workExperience.length - 1 && workExperience[i + 1]["company"]) {
       addElement(section.elem, "hr", ["d-none", "d-lg-block"]);
     }
   }
 }
 
-function renderWorkExperience(parent, data) {
+/*
+ * Renders everything for a single work experience entry.
+ * Adds it to the 'parent' element.
+ * returns {void}
+ */
+function addWorkExperience(parent, data) {
   // Work Experience data keys
   const company = "company";
   const location = "location";
@@ -275,7 +292,11 @@ function renderWorkExperience(parent, data) {
   }
 }
 
-function renderProjects(main, project) {
+/*
+ * Renders the projects section of the website.
+ * return {void}
+ */
+function renderProjects(main) {
   const section = sectionTemplate(main, "Projects");
   const gap = "g-4";
   const rowMargin = "mb-4";
@@ -285,12 +306,17 @@ function renderProjects(main, project) {
   let currentRow = null;
   for (let i = 0; i < projects.length; i++) {
     if (i % 2 === 0) {
-      currentRow = addElement(container, "div", ["row", gap, rowMargin]);
+      currentRow = addElement(container, "div", ["row", "align-items-stretch", gap, rowMargin]);
     }
     addProjectCard(currentRow, projects[i]);
   }
 }
 
+/*
+ * Renders a single card.
+ * @param {HTMLElement} parent - The parent element to append the card to.
+ * @param {Object} data - The data to render in the card.
+ */
 function addProjectCard(parent, data) {
   // Project data keys
   const title = "title";
@@ -309,7 +335,7 @@ function addProjectCard(parent, data) {
   const cardPadding = "p-2";
   const cardCorner = "rounded-3";
 
-  const card = addElement(parent, "div", [colBreak]);
+  const card = addElement(parent, "div", ["d-flex", colBreak]);
   const cardData = addElement(card, "div", [
     cardPadding,
     cardCorner,
@@ -322,19 +348,55 @@ function addProjectCard(parent, data) {
   cardSubSpan.textContent = data[title];
 
   // Row with image and description.
-  const cardRow = addElement(cardData, "div", ["row", "p-2"]);
-  const cardImgRow = addElement(cardData, "div", ["col-xl-6"]);
-  const cardImg = addElement(cardImgCol, "img", ["project-img"]);
+  const cardImgRow = addElement(cardData, "div", ["row", "p-2"]);
+  const cardImg = addElement(cardImgRow, "img", ["project-img"]);
   cardImg.src = imgPath + data[img];
   cardImg.alt = data[imgAlt];
-  const cardDescCol = addElement(cardRow, "div", ["col-xl-6"]);
-  const cardDesc = addElement(cardDescCol, "p");
+  const cardDescRow = addElement(cardData, "div");
+  const cardDesc = addElement(cardDescRow, "p");
   cardDesc.textContent = data[description];
 
   // Row with buttons.
   const cardButtonRow = addElement(cardData, "div", ["row", "p-2"]);
-  const cardButtonCol = addElement(cardButtonRow, "div", ["col-md"]);
-  const cardButtonGroup = addElement(cardButtonCol, "div", ["btn-group"]);
+
+
+  if (data[visit]) {
+    const visitButton = projectCardButton(cardButtonRow, data[visit], "Visit", "nf-md-link");
+  }
+
+  if (data[phone]) {
+    const phoneFormatted = data[phone].replace(
+      /(\d{3})(\d{3})(\d{4})/,
+      "($1) $2-$3",
+    );
+
+    const phoneText = "Call " + phoneFormatted;
+    const href = "tel:" + "+1" + data[phone];
+    const phoneButton = projectCardButton(cardButtonRow, href, phoneText, "nf-fa-phone");
+  }
+
+  if (data[sourceCode]) {
+    const sourceCodeButton = projectCardButton(cardButtonRow, data[sourceCode], "Source", "nf-cod-github");
+  }
+
+  if (data[download]) {
+    const downloadButton = projectCardButton(cardButtonRow, data[download], "Download", "nf-oct-download");
+  }
+
+  if (data[playBrowser]) {
+    const playButton = projectCardButton(cardButtonRow, data[playBrowser], "Play", "nf-md-controller_classic");
+    playButton.classList.add("d-none", "d-lg-block");
+  }
+}
+
+function projectCardButton(parent, href, text, nfIcon) {
+  const button = addElement(parent, "a", ["btn", "btn-primary", "fs-4", "m-1", "col"]);
+  button.href = href;
+  const icon = addElement(button, "i", ["nf", "m-2", nfIcon]);
+  const span = addElement(button, "span");
+  span.textContent = text;
+  button.target = "_blank";
+  return button;
 }
 
 function renderContact(main) {

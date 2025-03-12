@@ -1,4 +1,5 @@
 @import "coolvetica.css";
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
 
 :root {
   --white: #f2f2f0;
@@ -18,6 +19,14 @@
 
   --bs-light-bg: var(--muted-blue);
   --bs-light-color: var(--screen-beige);
+
+  --bs-primary-color: var(--muted-green);
+  --bs-primary-bg-subtle: var(--muted-blue);
+  --bs-primary-border-subtle: var(--muted-green);
+
+  --bs-btn-color: var(--white);
+  --bs-btn-bg: var(--muted-green);
+
 
   --checker-size: 5rem;
 }
@@ -138,13 +147,15 @@ h2 {
 .okeska {
   background-color: var(--dark);
   border-radius: 0.5rem;
-  border: 3px solid var(--mid-grey);
-  outline: 2px solid var(--white);
+  border: 5px solid var(--mid-grey);
+  outline: 3px solid var(--white);
   box-shadow: 0 0 0 6px var(--dark);
 }
 
 .okeska h2,
 .okeska h3 {
+  /* Silkscreen font */
+  font-family: "Silkscreen", sans-serif;
   display: block;
   margin: 0;
   font-size: 1em;
@@ -156,6 +167,7 @@ h2 {
 }
 
 .okeska h3 {
+  font-size: 0.75em;
   margin-top: -1rem;
   margin-left: 1rem;
 }
@@ -164,6 +176,38 @@ h2 {
   padding: 0 0.25rem;
   background-color: var(--dark);
 }
+
+.about-p {
+  font-size: 1.25em;
+  margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #7597ae !important;
+  color: #23213d !important;
+  border-color: #7597ae !important;
+}
+
+.btn-primary:hover {
+  /* make darker */
+  filter: brightness(1.1);
+  transition: 0.5s;
+}
+
+.project-img {
+}
+
+.socials {
+  display: inline-block;
+  color: var(--muted-green) !important;
+  text-decoration: none !important;
+}
+
+.socials:hover {
+  filter: brightness(1.1);
+  animation: jiggle 0.5s;
+}
+
 
 /* Animate background to move down and right forever */
 @keyframes moveBackground {
