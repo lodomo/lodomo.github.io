@@ -96,6 +96,7 @@ Doing all the design work and then coding it is a lot of work, I hope I have eno
 time to get it all done.
 
 ## Switching to Jquery
+
 ### March 4th 2025
 
 Jquery seems pretty powerful for what I want to do, and kinda already does the stuff
@@ -103,6 +104,7 @@ I wrote functions for. I'm going to switch to Jquery to see if I can get this wr
 faster and cleaner.
 
 ## Actually no.
+
 ### March 5th 2025
 
 I started writing in Jquery and maybe it's a good tool but it totally ruins the readability
@@ -111,6 +113,7 @@ for me, and feels like I'm giving a lot of control over to the library.
 I'm going back to writing my own functions so I get a better feel of how things are working.
 
 ## Progress
+
 ### March 6th 2025
 
 I've got the artwork done for the vertical version of my logo, and setup my profile picture
@@ -126,19 +129,21 @@ I got the H1 tag to hide a "welcome to lodomo.dev" message from the visuals, but
 it for the screen reader.
 
 ## Thinks are moving smoothly!
+
 ### March 10th 2025
 
 A lot of stuff done. I forgot to write about it.
 
-1) Logo wiggles on hover in the top right corner.
-2) "Hero" / "Jumbotron" setup, Really happy with it.
-3) Hidden h1 for screen readers perfected.
-4) About / Works / Projects / Contact sections setup.
-5) Footer ready for social buttons, there's not much.
-7) Slowly shifting checker patterns implemented.
-8) Section spacers are OK, I think I want them to be different. 
+1. Logo wiggles on hover in the top right corner.
+2. "Hero" / "Jumbotron" setup, Really happy with it.
+3. Hidden h1 for screen readers perfected.
+4. About / Works / Projects / Contact sections setup.
+5. Footer ready for social buttons, there's not much.
+6. Slowly shifting checker patterns implemented.
+7. Section spacers are OK, I think I want them to be different.
 
 ## Okeska Frame
+
 ### March 10th 2025
 
 I added a frame to the text in about, and will probably reuse it for the other sections.
@@ -146,13 +151,15 @@ It's called "Okeska" as a reference to "Earthbound" which was the inspiration fo
 of the sites design (and my design work in general).
 
 ## CoPilot is really bad at Javascript
+
 ### March 11th 2025
 
-I've noticed that copilot is generally wrong about what I'm trying to write. 
+I've noticed that copilot is generally wrong about what I'm trying to write.
 It's really frustrating, and I'm not sure if it's because I'm just writing in a different
-style than the norm or what. 
+style than the norm or what.
 
 ## Previous Work
+
 ### March 11th 2025
 
 Previous work section is complete. I recreated my resume for the web page, and have it format
@@ -165,10 +172,11 @@ I pulled a font from the Google Font API for the resume. I don't like using Goog
 but it works for now.
 
 ## Projects
+
 ### March 11th 2025
 
 I'm going to be re-using a lot of the code from the starships cards from the previous
-project. I want to mimic the "about" section text box, where the title covers part of the 
+project. I want to mimic the "about" section text box, where the title covers part of the
 border. Some projects will be able to play in browser, and/or have source code, so I want
 those buttons to appear if I activate them. The browser based games only work on desktop
 so I need those to be hidden unless they're on a large screen.
@@ -209,14 +217,22 @@ So for the projects I have a few functions:
 ## DM API
 ### March 11th 2025
 
-In the lecture today, Vercel was mentioned. I decided to test that out to create my 
-API to send me a message with the form. 
+In the lecture today, Vercel was mentioned. I decided to test that out to create my
+API to send me a message with the form.
 
-First off, the AI bot that makes programs for Vercel is absolute garbage and couldn't 
+First off, the AI bot that makes programs for Vercel is absolute garbage and couldn't
 create a single thing that worked.
 
 So I guess I'm going to have to do it myself. I decided to go with Flask since
-I'm a little familiar with it. It will be hosted through Vercel. 
+I'm a little familiar with it. It will be hosted through Vercel.
 
 I will add in a folder into the github repo with the code used for the API but keep
 the API key in a private repository.
+
+UPDATE AN HOUR LATER:
+
+I got my bluesky bot account banned because vercel ran the script about a thousand times
+and it was blasting me with messages. So. That won't work in the submitted version.
+Kinda bummed, I was really excited about that feature.
+"A Bluesky account you control (lodomobo.bsky.social) has had its direct messaging (DM) feature permanently removed due to a violation of our community guidelines. This decision was made based on several risk factors on your account."
+WHOOPS.

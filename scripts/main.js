@@ -278,51 +278,32 @@ function renderPreviousWork(main) {
 }
 
 function renderProjects(main) {
-  const section = sectionTemplate(main, "Projects");
-
-  const gap = "g-3";
-  const rowMargin = "mb-3";
-
-  const container = addElement(section.elem, "div", ["container", "p-1"]);
-
-  const projects = projectCards();
-
-  let currentRow = null;
-  for (let i = 0; i < projects.length; i++) {
-    if (i % 4 === 0) {
-      currentRow = addElement(container, "div", ["row", gap, rowMargin]);
-    }
-    currentRow.appendChild(projects[i]);
-  }
-
-  const p = addElement(section.elem, "p");
-  p.textContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-}
-
-function projectData() {
-  return [
+  const projects = [
     {
       title: "Escape The Arcade",
-      description: "The year is 198X, and from the veiled origins of Katana Corp. comes a new gaming frontier—Escape the Arcade. The why and how are shrouded in mystery, but one thing is clear: this is where next-level technology and imagination fuse to create experiences unlike anything you've ever encountered. I was the sole-programmer for anything technical in this project. From the hardware architecture to the software that runs the room, I coded it all.",
+      description:
+        "The year is 198X, and from the veiled origins of Katana Corp. comes a new gaming frontier—Escape the Arcade. The why and how are shrouded in mystery, but one thing is clear: this is where next-level technology and imagination fuse to create experiences unlike anything you've ever encountered. I was the sole-programmer for anything technical in this project. From the hardware architecture to the software that runs the room, I coded it all.",
       img: "escapethearcade.png",
       visit: "https://www.escapethearcade.com",
     },
     {
       title: "Neon Haven",
-      description: "The year is 208X. You've just been recruited by the Code Samurai, an elite group of renegades with a mission to dismantle the corrupt RONIN Crime Syndicate. After a major operation, you're tasked with handling the return of your team. But something's wrong. Instead of the five expected Samurai, fifteen figures are at your doorstep, all claiming to be on your side. Can you figure out who is friend, and who is foe? This game requires NO download, NO install, NO registration, NO payment, NO ads, and NO tracking of ANY kind.",
+      description:
+        "The year is 208X. You've just been recruited by the Code Samurai, an elite group of renegades with a mission to dismantle the corrupt RONIN Crime Syndicate. After a major operation, you're tasked with handling the return of your team. But something's wrong. Instead of the five expected Samurai, fifteen figures are at your doorstep, all claiming to be on your side. Can you figure out who is friend, and who is foe? This game requires NO download, NO install, NO registration, NO payment, NO ads, and NO tracking of ANY kind.",
       img: "neonhaven.png",
       phone: "+13618801802",
     },
     {
       title: "Escape Wright",
-      description: "An open source initiative to help anyone create complex immersive escape room experience. Currently in development, not ready for use.",
+      description:
+        "An open source initiative to help anyone create complex immersive escape room experience. Currently in development, not ready for use.",
       img: "escapewright.png",
       sourceCode: "https://git.lodomo.dev/escapewright",
     },
     {
       title: "Boulder Mage",
-      description: "Boulder Mage and the Eternal Nightmare is a proof of concept of a game currently in development by Lodomo.Dev. This game was 2nd place in the LOSPEC LTRO-1 GameJam. I am very proud of this game.",
+      description:
+        "Boulder Mage and the Eternal Nightmare is a proof of concept of a game currently in development by Lodomo.Dev. This game was 2nd place in the LOSPEC LTRO-1 GameJam. I am very proud of this game.",
       img: "bouldermage.png",
       download: "https://lodomo.itch.io/bouldermagenightmare",
       playBrowser: "https://lodomo.itch.io/bouldermagenightmare",
@@ -330,26 +311,30 @@ function projectData() {
     },
     {
       title: "Don't Eat Poison",
-      description: "Created for iOS, Android, Linux, and Windows, Don't Eat Poison is a simple game where you are a mindless pig who must avoid eating poison. The trick? He's allergic to a random poison fruit each life. Unlock costumes, compete for high scores, and maybe one day you'll be a merpig. Note: Sorry, this is no longer available on any app store.",
+      description:
+        "Created for iOS, Android, Linux, and Windows, Don't Eat Poison is a simple game where you are a mindless pig who must avoid eating poison. The trick? He's allergic to a random poison fruit each life. Unlock costumes, compete for high scores, and maybe one day you'll be a merpig. Note: Sorry, this is no longer available on any app store.",
       img: "donteatpoison.png",
       download: "https://lodomo.itch.io/dont-eat-poison",
     },
     {
       title: "Peasants in a Dungeon",
-      description: "A text based adventure where you're unfairly thrown into a dungeon. Will you escape? Will you die? Will you rob a mouse to save yourself? Who knows!",
+      description:
+        "A text based adventure where you're unfairly thrown into a dungeon. Will you escape? Will you die? Will you rob a mouse to save yourself? Who knows!",
       img: "peasantsinadungeon.png",
       download: "https://lodomo.itch.io/peasants-in-a-dungeon",
       sourceCode: "https://git.lodomo.dev/piad",
     },
     {
       title: "Trajectory Oracle",
-      description: "What if we could figure out where things are going? Trajectory Oracle is an experiment that combines machine learning with YOLO object detection to predict the trajectory of objects in a video. Does it work? Sometimes. Was it fun to make? Absolutely.",
+      description:
+        "What if we could figure out where things are going? Trajectory Oracle is an experiment that combines machine learning with YOLO object detection to predict the trajectory of objects in a video. Does it work? Sometimes. Was it fun to make? Absolutely.",
       img: "trajectoryoracle.png",
       sourceCode: "https://git.lodomo.dev/trajorc",
     },
     {
       title: "LunaSea",
-      description: "What if the moon fell into the sea? What if humanity was compelled to conquer it? What if you... succeeded? Text-Based Adventure. Full GUI version in the works.",
+      description:
+        "What if the moon fell into the sea? What if humanity was compelled to conquer it? What if you... succeeded? Text-Based Adventure. Full GUI version in the works.",
       img: "lunasea.png",
       sourceCode: "https://git.lodomo.dev/lunasea",
     },
@@ -364,19 +349,43 @@ function projectData() {
       description: "",
       img: "orion.png",
       sourceCode: "https://git.lodomo.dev/orion",
-      phone: "(555) 555-5555",
     },
     {
       title: "Messengern",
-      description: "MERN Stack based chat application. This is a proof of concept for a chat application that uses the MERN stack. It is not intended for production use.",
+      description:
+        "MERN Stack based chat application. This is a proof of concept for a chat application that uses the MERN stack. It is not intended for production use.",
       img: "assets/project6.png",
       sourceCode: "https://git.lodomo.dev/mern",
     },
-  ]
+  ];
+
+  const section = sectionTemplate(main, "Projects");
+  const gap = "g-4";
+  const rowMargin = "mb-4";
+
+  const container = addElement(section.elem, "div", ["container", "p-1"]);
+
+  let currentRow = null;
+  for (let i = 0; i < projects.length; i++) {
+    if (i % 2 === 0) {
+      currentRow = addElement(container, "div", ["row", gap, rowMargin]);
+    }
+    addProjectCard(currentRow, projects[i]);
+  }
 }
 
-function projectCards() {
-  return [];
+function addProjectCard(parent, data) {
+  const colBreak = "col-lg-6";
+  const cardPadding = "p-2";
+  const cardCorner = "rounded-3";
+
+  const card = addElement(parent, "div", [colBreak]);
+  const cardData = addElement(card, "div", [
+    cardPadding,
+    cardCorner,
+    "container-fluid",
+    "okeska",
+  ]);
 }
 
 function renderContact(main) {
