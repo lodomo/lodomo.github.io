@@ -308,9 +308,6 @@ Every single picture is broken.
 
 Update: I added the assets to gitignore to clean up my file-tree, and I just needed to remove it... So we're all good.
 
-I got the scroll working properly, looks like bootstrap takes over the scroll offset, so I set an "important" to the CSS
-to get the scroll offset to work properly.
-
 I will be spending the rest of my time cleaning up the code, doing my WAVE checks, and checking for any deadends.
 
 Home stretch!!
