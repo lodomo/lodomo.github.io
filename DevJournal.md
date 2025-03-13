@@ -269,7 +269,7 @@ of ChatGPT to find the right combination of classes, but the buttons don't go to
 
 I'm going to call it done for now, and move on to the contact section.
 
-## Just kidding, Those button infuriate me.
+## Just kidding, Those buttons infuriate me.
 
 ### March 12th 2025
 
@@ -284,9 +284,10 @@ There's officially 4 fonts on the page, and I'm happy with how they all look.
 Coolvetica for the navbar and buttons. Silkscreen for the "okeska" titles. Garamond for the resume. DM Sans for the rest.
 
 ## Email API
+
 ### March 12th 2025
 
-I found a website called https://web3forms.com/ that will let me send emails from the site.
+Since Bluesky was a bust, I'm going back to https://web3forms.com/ that will let me send emails from the site.
 It gives you a public API key that is safe to expose, and I can use that to send myself an email.
 It's no more dangerous to expose than my email address.
 
@@ -297,3 +298,12 @@ Update: 11:28pm
 The form works!!!
 
 Now all that's left is to clean up the code, add more comments and make the video...
+
+## Oh No.
+
+### March 13th 2025
+
+I woke up and checked what the site looks like when it's pushed compared to what it looks like on live-server.
+Every single picture is broken.
+
+I thought I was almost done...
