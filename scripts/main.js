@@ -48,7 +48,7 @@ function renderMain() {
  * Renders the footer of the website.
  * return {void}
  */
-function renderFooter(title) {
+function renderFooter() {
   const footer = document.getElementById("footer");
   footer.classList.add(
     "container-fluid",
@@ -99,7 +99,7 @@ function renderFooter(title) {
   footerImg.width = 28;
   footerImg.height = 35;
   const p = addElement(copyright, "span", ["p-0", "m-0"]);
-  p.textContent = "© " + 2025 + " " + title;
+  p.textContent = "© " + 2025 + " " + TITLE;
 }
 
 /**
