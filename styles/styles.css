@@ -236,7 +236,7 @@ h2,
 }
 
 .max-vh {
-  height: 100lvh;
+  height: 100svh;
 }
 
 /* I wanted the bullet points to go away from my previous work section. */
