@@ -236,8 +236,7 @@ h2,
 }
 
 .max-vh {
-  max-height: 100vh;
-  min-height: -webkit-fill-available;
+  height: 100lvh;
 }
 
 /* I wanted the bullet points to go away from my previous work section. */
