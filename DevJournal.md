@@ -320,6 +320,15 @@ The site is complete! I am very happy with how it turned out. I just uploaded th
 
 All the artwork on the page was created by me, below is the readme from the repository that goes over all my design implementations.
 
+## Final Final Dev Journal
+
+As soon as I did that last push I tested it on my phone and the page would "jump around" when scrolling because the jumbotron was set to 100vh.
+That would stretch as the address bar went away, and jump around like crazy when I tried to enter text in the contact form, since they keyboard was 
+adjusting the vh. 
+
+I found this blog post to fix it, I switched from "100-vh" with bootstrap to a custom class that used svh.
+[CSS units](https://dev.to/frehner/css-vh-dvh-lvh-svh-and-vw-units-27k4)
+
 # Read Me
 
 ## Inspiration
