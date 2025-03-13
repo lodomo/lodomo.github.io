@@ -235,6 +235,11 @@ h2,
   position: relative;
 }
 
+.max-vh {
+  max-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
 /* I wanted the bullet points to go away from my previous work section. */
 /* This helper class does that, and could be useful in the future */
 .hide-sm {

@@ -205,7 +205,7 @@ function renderHome(parent) {
     "jumbotron",
     "jumbotron-fluid",
     "p-0",
-    "vh-100",
+    "max-vh",
     "home",
     "black",
   ]);
