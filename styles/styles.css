@@ -27,16 +27,20 @@
   --bs-btn-color: var(--white);
   --bs-btn-bg: var(--muted-green);
 
-
   --checker-size: 5rem;
 }
 
-.section-top {
-  scroll-margin-top: 4.5rem !important;
-}
-
+/* Fonts */
 .silkscreen {
   font-family: "Silkscreen", sans-serif;
+}
+
+.coolvetica {
+  font-family: "Coolvetica", sans-serif;
+}
+
+.garamond {
+  font-family: "EB Garamond", serif;
 }
 
 body {
@@ -45,8 +49,8 @@ body {
   box-sizing: border-box;
 }
 
-/* For the non-visually impaired, the h1 is not needed.
-* This preserves the h1 for screen reader purposes */
+/* This preserves the h1 for screen reader purposes */
+/* The images/jumbotron acts like a h1 for the visual user */
 h1 {
   font-size: 0px;
 }
@@ -58,12 +62,8 @@ h2,
   font-weight: 500;
 }
 
-.projects-heading {
-  text-align: center;
-}
-
-.hide-sm {
-  display: none;
+.section-top {
+  scroll-margin-top: 4.5rem;
 }
 
 .home,
@@ -72,38 +72,6 @@ h2,
   background-repeat: repeat;
   background-size: var(--checker-size);
   animation: moveBackground 8s linear infinite;
-}
-
-.previous-work {
-  color: var(--screen-dark);
-  background-color: var(--screen-beige);
-  font-size: 1.2rem;
-}
-
-.previous-work-font {
-  font-family: "EB Garamond", serif;
-  font-optical-sizing: auto;
-}
-
-.about,
-.projects {
-  background-image: url("../assets/purple-checkerboard.svg");
-  background-repeat: repeat;
-  background-size: var(--checker-size);
-  animation: moveBackground 8s reverse linear infinite;
-}
-
-.work-li {
-  margin-left: 2rem;
-  padding: 0;
-}
-
-.jiggle-hover:hover {
-  animation: jiggle 0.5s;
-}
-
-.relative {
-  position: relative;
 }
 
 .portrait {
@@ -127,7 +95,7 @@ h2,
 
 .floating-logo {
   width: 75vw;
-  animation: rotate 5s infinite;
+  animation: rock 5s infinite;
 }
 
 .vertical-logo {
@@ -138,6 +106,42 @@ h2,
   display: none;
 }
 
+.about,
+.projects {
+  background-image: url("../assets/purple-checkerboard.svg");
+  background-repeat: repeat;
+  background-size: var(--checker-size);
+  animation: moveBackground 8s reverse linear infinite;
+}
+
+.about-heading,
+.contact-heading {
+  font-size: 1.5em;
+  margin-bottom: -1.5rem;
+  z-index: 1000;
+}
+
+.about-p {
+  font-size: 1.25em;
+  margin-bottom: 0.5rem;
+}
+
+.previous-work {
+  color: var(--screen-dark);
+  background-color: var(--screen-beige);
+  font-size: 1.2rem;
+}
+
+.projects-heading {
+  text-align: center;
+}
+
+.work-li {
+  margin-left: 2rem;
+  padding: 0;
+}
+
+/* Helpers */
 .pixel-art {
   image-rendering: pixelated; /* Most modern browsers */
   image-rendering: crisp-edges; /* Fallback for some browsers */
@@ -147,6 +151,8 @@ h2,
   -ms-interpolation-mode: nearest-neighbor; /* IE */
 }
 
+/* Seperates the sections with a drop shadow. */
+/* Makes the sections look like they are floating */
 .drop-shadow {
   background-image: url("../assets/shadow-seperator.png");
   background-repeat: repeat-x;
@@ -155,6 +161,8 @@ h2,
   height: 16px;
 }
 
+/* Creates a box that looks like a video game text box */
+/* Heavily inspired by Earthbound, 'OKESKA' is a sound effect from the game */
 .okeska {
   background-color: var(--dark);
   border-radius: 0.5rem;
@@ -178,21 +186,11 @@ h2,
   margin-left: 1rem;
 }
 
+/* Puts a background behind the text for the headers on the okeska blocks */
+/* This recreated the look of the title being on top of the border of a text box */
 .heading-bg-dark {
   padding: 0 0.25rem;
   background-color: var(--dark);
-}
-
-.about-heading,
-.contact-heading {
-  font-size: 1.5em;
-  margin-bottom: -1.5rem;
-  z-index: 1000;
-}
-
-.about-p {
-  font-size: 1.25em;
-  margin-bottom: 0.5rem;
 }
 
 .btn-primary {
@@ -202,12 +200,8 @@ h2,
 }
 
 .btn-primary:hover {
-  /* make darker */
   filter: brightness(1.1);
   transition: 0.5s;
-}
-
-.project-img {
 }
 
 .socials {
@@ -221,6 +215,8 @@ h2,
   animation: jiggle 0.5s;
 }
 
+/* Needed this specifically for the 'contact' header to be in the right */
+/* position on top of the box. Tested for all sizes and it seems to work */
 .offset-left {
   margin-left: -12rem;
 }
@@ -229,6 +225,20 @@ h2,
   display: block;
   min-width: 10px;
   max-width: 400px;
+}
+
+.jiggle-hover:hover {
+  animation: jiggle 0.5s;
+}
+
+.relative {
+  position: relative;
+}
+
+/* I wanted the bullet points to go away from my previous work section. */
+/* This helper class does that, and could be useful in the future */
+.hide-sm {
+  display: none;
 }
 
 /* Animate background to move down and right forever */
@@ -241,6 +251,7 @@ h2,
   }
 }
 
+/* Jiggle back and forth */
 @keyframes jiggle {
   0% {
     transform: rotate(0deg);
@@ -259,8 +270,8 @@ h2,
   }
 }
 
-/* Rotate back and forth left and right */
-@keyframes rotate {
+/* Rock back and forth left and right */
+@keyframes rock {
   0% {
     transform: rotate(-10deg);
   }
@@ -298,10 +309,7 @@ h2,
     display: block;
   }
 
-  .section-top {
-    scroll-margin-top: 6rem;
-  }
-
+  /* This brings back the bullet points for the previous work section */
   .hide-sm {
     display: block;
   }
@@ -318,50 +326,3 @@ h2,
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
 }
-
-/* Overridable Bootstrap Variables
---bs-body-color
---bs-body-bg
---bs-emphasis-color
---bs-border-color
-
---bs-primary-color
---bs-primary-bg-subtle
---bs-primary-border-subtle
-
---bs-secondary-color
---bs-secondary-bg
-
---bs-tertiary-color
---bs-tertiary-bg
-
---bs-success-color
---bs-success-bg-subtle
---bs-success-border-subtle
---bs-succces-text-emphasis
-
---bs-danger-color
---bs-danger-bg-subtle
---bs-danger-border-subtle
---bs-danger-text-emphasis
-
---bs-warning-color
---bs-warning-bg-subtle
---bs-warning-border-subtle
---bs-warning-text-emphasis
-
---bs-info-color
---bs-info-bg-subtle
---bs-info-border-subtle
---bs-info-text-emphasis
-
---bs-light-color
---bs-light-bg
---bs-light-border-subtle
---bs-light-text-emphasis
-
---bs-dark-color
---bs-dark-bg
---bs-dark-border-subtle
---bs-dark-text-emphasis
-*/

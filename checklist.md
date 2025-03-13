@@ -1,32 +1,40 @@
 # Checklist for Final Project
 
 ## Checks
-- [ ] Prettier on all files
-- [ ] WAVE check on all pages
+- [x] Prettier on all files
+    - [x] index.html
+    - [x] main.js
+    - [x] data.mjs
+    - [x] styles.css
+- [x] WAVE check on all pages
 
 ## Project Description
-- [ ] Nav Bar
-    - [ ] Styled Consistently
-- [ ] About Section
-    - [ ] Introduction
-    - [ ] Professional Experience
-    - [ ] Photo optional*
-- [ ] Previous Work (Resume)
-    - [ ] General Outline
-    - [ ] Courses Taken
-- [ ] Projects
-    - [ ] Min 3 Projects
-        - [ ] Description
-        - [ ] Link to GitHub
-- [ ] Contact
-    - [ ] Form
+- [x] Nav Bar
+    - [x] Styled Consistently
+- [x] About Section
+    - [x] Introduction
+    - [x] Professional Experience
+    - [x] Photo optional - Put this in the jumbotron as a portrait drawing
+- [x] Previous Work (Resume)
+    - [x] General Outline
+    - [x] Education
+- [x] Projects
+    - [x] Min 3 Projects
+        - [x] Description
+        - [x] Link for each one
+- [x] Contact
+    - [x] Form
+    - [x] API to send email
 
-- [ ] Beyond the class
-    - [ ] learn something outside the class and implement it.
+- [x] Beyond the class
+    - [x] learn something outside the class and implement it.
         - Animated backgrounds
         - Animated hovers
+        - Animated static images
         - Jumbotron
-        - Node/Vite to implement a static page.
+        - API call for email
+        - Nav Bar closes on selection
+        - Changed colors from the default bootstrap colors
 
 - [x] Single Page OR Multi page
     - Single page!
@@ -35,11 +43,11 @@
     - https://github.com/lodomo/lodomo.github.io
     - https://lodomo.github.io
 
-- [ ] README.md
-    - [ ] Outside Libraries?
-    - [ ] Frameworks?
-    - [ ] Blogs? Tutorials?
-    - [ ] How to deploy
+- [x] README.md
+    - [x] Outside Libraries?
+    - [x] Frameworks?
+    - [x] Blogs? Tutorials?
+    - [x] How to deploy
 
 - [x] Bare Bones
     - [x] HTML
@@ -48,7 +56,7 @@
     - [x] Bootstrap
 
 - [x] Six Meaningful Commits
-- [ ] Journal
-    - [ ] Include all outside sources
+- [x] Journal
+    - [x] Include all outside sources
 
 - [ ] 10-12 Minute presentation

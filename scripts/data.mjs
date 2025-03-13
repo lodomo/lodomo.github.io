@@ -77,6 +77,27 @@ export const workExperience = [
   },
 ];
 
+export const education = [
+  {
+    school: "Portland State University",
+    degree: "Computer Science, B.S.",
+    location: "Portland, OR",
+    date: "Jun 2025",
+  },
+  {
+    school: "Southern New Hampshire University",
+    degree: "Liberal Arts, A.A.",
+    location: "Manchester, NH",
+    date: "April 2020",
+  },
+  {
+    school: "U.S. Navy",
+    degree: "Master Training Specialist",
+    location: "Point Loma, CA",
+    date: "Oct 2019",
+  },
+];
+
 export const projects = [
   {
     title: "Escape The Arcade",

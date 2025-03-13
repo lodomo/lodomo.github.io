@@ -1,49 +1,50 @@
 import {
-  title,
-  sections,
-  about,
-  workExperience,
-  projects,
-  publicAccessKey,
+  title as TITLE,
+  sections as SECTIONS,
+  about as ABOUT,
+  workExperience as WORK_EXPERIENCE,
+  education as EDUCATION,
+  projects as PROJECTS,
+  publicAccessKey as PUBLIC_ACCESS_KEY,
 } from "./data.mjs";
 
-/*
+/**
  * Render the content of the website
  * return {void}
  */
 function main() {
-  document.title = title;
-  renderHeader(sections, title);
-  renderMain(sections, title);
-  renderFooter(title);
+  document.title = TITLE;
+  renderHeader();
+  renderMain();
+  renderFooter();
 }
 
-/*
+/**
  * Render the header of the website.
  * Currently only renders the navbar.
  * There may be more content in the future.
  * return {void}
  */
-function renderHeader(sections, title) {
+function renderHeader() {
   const header = document.getElementById("header");
-  renderNavbar(header, title, sections);
+  renderNavbar(header);
 }
 
-/*
+/**
  * Renders each section of the website.
  * return {void}
  */
-function renderMain(sections, title) {
+function renderMain() {
   const main = document.getElementById("main");
   main.classList.add("container-fluid", "p-0");
-  renderHome(main, title);
+  renderHome(main);
   renderAbout(main);
   renderPreviousWork(main);
   renderProjects(main);
   renderContact(main);
 }
 
-/*
+/**
  * Renders the footer of the website.
  * return {void}
  */
@@ -57,7 +58,7 @@ function renderFooter(title) {
     "text-center",
   );
   const footerRow = addElement(footer, "div", ["row"]);
-  const spacer = addElement(footerRow, "div", ["col-md-4"]);
+  addElement(footerRow, "div", ["col-md-4"]); // Spacer
   const socials = addElement(footerRow, "div", [
     "col-md-4",
     "d-flex",
@@ -65,25 +66,26 @@ function renderFooter(title) {
     "justify-content-center",
   ]);
 
-  const bluesky = addSocialButton(
+  addSocialButton(
     socials,
     "https://bsky.app/profile/lodomo.dev",
     "nf-fae-butterfly",
     "Bluesky Profile",
   );
-  const email = addSocialButton(
+
+  addSocialButton(
     socials,
     "mailto:lodomo@lodomo.dev",
     "nf-md-email",
     "Email Lodomo",
   );
-  const linkedin = addSocialButton(
+  addSocialButton(
     socials,
     "https://linkedin.com/in/ldmoon",
     "nf-dev-linkedin",
     "LinkedIn Profile",
   );
-  const github = addSocialButton(
+  addSocialButton(
     socials,
     "https://github.com/lodomo",
     "nf-dev-github",
@@ -100,6 +102,15 @@ function renderFooter(title) {
   p.textContent = "© " + 2025 + " " + title;
 }
 
+/**
+ * Creates a social media button with an icon and a link.
+ * @param {HTMLElement} parent - The parent element to append the button to.
+ * @param {String} href - The link to the social media profile.
+ * @param {String} icon - The icon class to use for the button (from NerdFonts)
+ * @param {String} ariaLabel - The aria-label for the button.
+ *
+ * return {void}
+ */
 function addSocialButton(parent, href, icon, ariaLabel = "") {
   const button = addElement(parent, "div", ["socials"]);
   // const iconElement = addElement("i", ["nf", "m-2", "socials", icon]);
@@ -111,19 +122,17 @@ function addSocialButton(parent, href, icon, ariaLabel = "") {
   return;
 }
 
-/*
+/**
  * Renders the navbar of the website.
  * The navbar is a fixed-top navbar with a logo and a list of sections.
  *
- * @param {HTMLElement} header - The header element to append the navbar to.
- * @param {String} title - The title of the website.
- * @param {Array} sections - An array of sections to render in the navbar.
+ * @param {HTMLElement} parent - The parent element to append the navbar to.
  *
  * return {void}
  */
-function renderNavbar(header, title, sections) {
+function renderNavbar(parent) {
   const branding_w_logo = "assets/branding-w-logo.png";
-  const navbar = addElement(header, "nav", [
+  const navbar = addElement(parent, "nav", [
     "navbar",
     "navbar-expand-md",
     "fixed-top",
@@ -141,7 +150,7 @@ function renderNavbar(header, title, sections) {
     "jiggle-hover",
   ]);
   brandImage.src = branding_w_logo;
-  brandImage.alt = title;
+  brandImage.alt = TITLE;
   brandImage.height = 37;
   brandImage.width = 160;
 
@@ -150,8 +159,6 @@ function renderNavbar(header, title, sections) {
   toggler.dataset.bsTarget = "#navbarSupportedContent";
   toggler.alt = "Toggle Navigation";
   toggler.ariaLabel = "Toggle Navigation";
-
-  // Toggler Icon
   addElement(toggler, "span", ["navbar-toggler-icon"]);
 
   const collapse = addElement(navbarSubContainer, "div", [
@@ -162,7 +169,7 @@ function renderNavbar(header, title, sections) {
 
   const list = addElement(collapse, "ul", ["navbar-nav", "mr-auto"]);
 
-  sections.forEach((item) => {
+  SECTIONS.forEach((item) => {
     const listItem = addElement(list, "li", "", ["nav-item"]);
     listItem.id = item.toLowerCase() + "-nav";
     const link = addElement(listItem, "a", ["nav-link", "h-100", "fs-4"], item);
@@ -182,14 +189,17 @@ function renderNavbar(header, title, sections) {
   });
 }
 
-/*
+/**
  * Renders the home section of the website.
  * The home section is a jumbotron splash of my portrait and logo
  * with a scrolling checkerboard background.
+ *
+ * @param {HTMLElement} parent - The parent element to append the home section to.
+ *
  * return {void}
  */
-function renderHome(main, title) {
-  const homeRow = addElement(main, "div", ["row", "relative"]);
+function renderHome(parent) {
+  const homeRow = addElement(parent, "div", ["row", "relative"]);
   homeRow.id = "home";
   const home = addElement(homeRow, "div", [
     "jumbotron",
@@ -202,7 +212,7 @@ function renderHome(main, title) {
 
   // Keep an h1 element for accessibility
   const h1 = addElement(home, "h1");
-  h1.ariaLabel = "Welcome to " + title;
+  h1.ariaLabel = "Welcome to " + TITLE;
 
   const logoContainer = addElement(home, "div", ["logo-container"]);
   const verticalLogo = addElement(logoContainer, "img", [
@@ -224,42 +234,64 @@ function renderHome(main, title) {
   portrait.alt = "Pixel art portrait of a man with a beard, and glasses.";
 }
 
-/*
+/**
  * Renders the about/bio section inside the 'okeska' text container.
+ * @param {HTMLElement} parent - The parent element to append the about section to.
+ *
  * return {void}
  */
-function renderAbout(main) {
-  const section = sectionTemplate(main, "About");
+function renderAbout(parent) {
+  const section = sectionTemplate(parent, "About");
   section.container.classList.add("pb-4");
 
   section.span.classList.add("heading-bg-dark", "silkscreen");
   section.elem.classList.add("p-3", "okeska");
 
-  for (let i = 0; i < about.length; i++) {
+  for (let i = 0; i < ABOUT.length; i++) {
     const p = addElement(section.elem, "p");
-    p.textContent = about[i];
+    p.textContent = ABOUT[i];
   }
 }
 
-/*
+/**
  * Renders my resume in the previous work section.
- * TODO: Add education.
+ * @param {HTMLElement} parent - The parent element to append the previous work section to.
+ *
+ * return {void}
  */
-function renderPreviousWork(main) {
-  const section = sectionTemplate(main, "Previous Work");
+function renderPreviousWork(parent) {
+  const section = sectionTemplate(parent, "Previous Work");
   document.getElementById("previous-work").classList.add("text-center");
 
-  for (let i = 0; i < workExperience.length; i++) {
-    addWorkExperience(section.elem, workExperience[i]);
-    if (i < workExperience.length - 1 && workExperience[i + 1]["company"]) {
+  for (let i = 0; i < WORK_EXPERIENCE.length; i++) {
+    addWorkExperience(section.elem, WORK_EXPERIENCE[i]);
+    if (i < WORK_EXPERIENCE.length - 1 && WORK_EXPERIENCE[i + 1]["company"]) {
       addElement(section.elem, "hr", ["d-none", "d-lg-block"]);
+    }
+  }
+
+  addElement(section.elem, "hr");
+  const educationTitle = addElement(section.elem, "h3", [
+    "col-md-6",
+    "fs-2",
+    "fw-bolder",
+    "text-md-start",
+    "garamond",
+  ]);
+  educationTitle.textContent = "Education";
+  for (let i = 0; i < EDUCATION.length; i++) {
+    addEducation(section.elem, EDUCATION[i]);
+    if (i < EDUCATION.length - 1 && EDUCATION[i + 1]["school"]) {
+      addElement(section.elem, "hr");
     }
   }
 }
 
-/*
+/**
  * Renders everything for a single work experience entry.
- * Adds it to the 'parent' element.
+ * @param {HTMLElement} parent - The parent element to append the work experience to.
+ * @param {Object} data - The data to render in the work experience entry.
+ *
  * returns {void}
  */
 function addWorkExperience(parent, data) {
@@ -271,13 +303,13 @@ function addWorkExperience(parent, data) {
   const bullets = "bullets";
 
   if (data[company]) {
-    const row = addElement(parent, "div", ["row", "previous-work-font"]);
+    const row = addElement(parent, "div", ["row", "garamond"]);
     const companyCol = addElement(row, "div", [
       "col-md-6",
       "fs-2",
       "fw-bolder",
       "text-md-start",
-      "previous-work-font",
+      "garamond",
     ]);
     companyCol.textContent = data[company];
     const locationCol = addElement(row, "div", [
@@ -285,7 +317,7 @@ function addWorkExperience(parent, data) {
       "fw-light",
       "text-md-end",
       "fst-italic",
-      "previous-work-font",
+      "garamond",
     ]);
     locationCol.textContent = data[location];
   }
@@ -295,14 +327,14 @@ function addWorkExperience(parent, data) {
     "col-md",
     "fst-italic",
     "text-md-start",
-    "previous-work-font",
+    "garamond",
   ]);
   roleCol.textContent = data[role];
   const dateCol = addElement(row2, "div", [
     "col-md-4",
     "fw-bold",
     "text-md-end",
-    "previous-work-font",
+    "garamond",
   ]);
   dateCol.textContent = data[date];
 
@@ -313,25 +345,46 @@ function addWorkExperience(parent, data) {
       "d-none",
       "d-lg-block",
     ]);
-    const ul = addElement(row3, "ul", [
-      "work-ul",
-      "p-0",
-      "m-0",
-      "previous-work-font",
-    ]);
+    const ul = addElement(row3, "ul", ["work-ul", "p-0", "m-0", "garamond"]);
     for (let i = 0; i < data[bullets].length; i++) {
-      const li = addElement(ul, "li", ["work-li", "previous-work-font"]);
+      const li = addElement(ul, "li", ["work-li", "garamond"]);
       li.textContent = data[bullets][i];
     }
   }
 }
 
-/*
+/**
+ * Renders everything for a single education entry.
+ * @param {HTMLElement} parent - The parent element to append the education entry to.
+ * @param {Object} data - The data to render in the education entry.
+ *
+ * returns {void}
+ */
+function addEducation(parent, data) {
+  const school = "school";
+  const degree = "degree";
+  const date = "date";
+  const location = "location";
+  const data_array = [data[school], data[degree], data[location], data[date]];
+
+  const row = addElement(parent, "div", ["row"]);
+  for (let i = 0; i < data_array.length; i++) {
+    if (data_array[i]) {
+      const col = addElement(row, "div", ["col-md"]);
+      const text = addElement(col, "span", ["garamond"]);
+      text.textContent = data_array[i];
+    }
+  }
+}
+
+/**
  * Renders the projects section of the website.
+ * @param {HTMLElement} parent - The parent element to append the projects section to.
+ *
  * return {void}
  */
-function renderProjects(main) {
-  const section = sectionTemplate(main, "Projects");
+function renderProjects(parent) {
+  const section = sectionTemplate(parent, "Projects");
   const gap = "g-4";
   const rowMargin = "mb-4";
 
@@ -343,15 +396,17 @@ function renderProjects(main) {
     gap,
     rowMargin,
   ]);
-  for (let i = 0; i < projects.length; i++) {
-    addProjectCard(currentRow, projects[i]);
+  for (let i = 0; i < PROJECTS.length; i++) {
+    addProjectCard(currentRow, PROJECTS[i]);
   }
 }
 
-/*
+/**
  * Renders a single card.
  * @param {HTMLElement} parent - The parent element to append the card to.
  * @param {Object} data - The data to render in the card.
+ *
+ * return {void}
  */
 function addProjectCard(parent, data) {
   // Project data keys
@@ -410,12 +465,7 @@ function addProjectCard(parent, data) {
   ]);
 
   if (data[visit]) {
-    const visitButton = projectCardButton(
-      cardButtonRow,
-      data[visit],
-      "Visit",
-      "nf-md-link",
-    );
+    projectCardButton(cardButtonRow, data[visit], "Visit", "nf-md-link");
   }
 
   if (data[phone]) {
@@ -426,16 +476,11 @@ function addProjectCard(parent, data) {
 
     const phoneText = "Call " + phoneFormatted;
     const href = "tel:" + "+1" + data[phone];
-    const phoneButton = projectCardButton(
-      cardButtonRow,
-      href,
-      phoneText,
-      "nf-fa-phone",
-    );
+    projectCardButton(cardButtonRow, href, phoneText, "nf-fa-phone");
   }
 
   if (data[sourceCode]) {
-    const sourceCodeButton = projectCardButton(
+    projectCardButton(
       cardButtonRow,
       data[sourceCode],
       "Source",
@@ -444,7 +489,7 @@ function addProjectCard(parent, data) {
   }
 
   if (data[download]) {
-    const downloadButton = projectCardButton(
+    projectCardButton(
       cardButtonRow,
       data[download],
       "Download",
@@ -463,6 +508,15 @@ function addProjectCard(parent, data) {
   }
 }
 
+/**
+ * Creates a button for a project card.
+ * @param {HTMLElement} parent - The parent element to append the button to.
+ * @param {String} href - The link for the button.
+ * @param {String} text - The text for the button.
+ * @param {String} nfIcon - The NerdFont icon class for the button.
+ *
+ * return {HTMLElement} - The button element, for further customization.
+ */
 function projectCardButton(parent, href, text, nfIcon) {
   const button = addElement(parent, "a", [
     "btn",
@@ -472,15 +526,21 @@ function projectCardButton(parent, href, text, nfIcon) {
     "col",
   ]);
   button.href = href;
-  const icon = addElement(button, "i", ["nf", "m-2", nfIcon]);
+  addElement(button, "i", ["nf", "m-2", nfIcon]);
   const span = addElement(button, "span");
   span.textContent = text;
   button.target = "_blank";
   return button;
 }
 
-function renderContact(main) {
-  const section = sectionTemplate(main, "Contact");
+/**
+ * Renders the contact section of the website.
+ * @param {HTMLElement} parent - The parent element to append the contact section to.
+ *
+ * return {void}
+ */
+function renderContact(parent) {
+  const section = sectionTemplate(parent, "Contact");
 
   section.container.classList.add("pb-4");
   section.h2.classList.add("mx-auto", "text-center");
@@ -494,13 +554,13 @@ function renderContact(main) {
   const accessKey = addElement(form, "input", ["form-control", "mb-3"]);
   accessKey.type = "hidden";
   accessKey.name = "access_key";
-  accessKey.value = publicAccessKey;
+  accessKey.value = PUBLIC_ACCESS_KEY;
 
   addFormTextInput(form, "Name");
   addFormTextInput(form, "Email");
   addFormTextInput(form, "Subject");
 
-  /* Special for Message Input */
+  /** Special for Message Input */
   const message = addElement(form, "div", ["form-group"]);
   const messageLabel = addElement(message, "label");
   messageLabel.htmlFor = "message";
@@ -518,13 +578,15 @@ function renderContact(main) {
   botCheck.name = "botcheck";
   botCheck.style.display = "none";
   botCheck.ariaLabel = "I am not a robot";
-  
+
   // Submit and Reset Buttons
   const buttonRow = addElement(form, "div", ["row", "g-3", "p-2"]);
   const submitButton = addElement(buttonRow, "button", [
     "btn",
     "btn-primary",
     "col",
+    "coolvetica",
+    "fs-4",
   ]);
   submitButton.type = "submit";
   submitButton.textContent = "Submit";
@@ -533,6 +595,8 @@ function renderContact(main) {
     "btn",
     "btn-secondary",
     "col",
+    "coolvetica",
+    "fs-4",
   ]);
   resetButton.type = "reset";
   resetButton.textContent = "Reset";
@@ -546,9 +610,12 @@ function renderContact(main) {
   });
 }
 
-/**
+/***
  * Create a text input and the corresponding label.
- * Works for text, email, password, and date inputs.
+ * @param {HTMLElement} parent - The parent element to append the text input to.
+ * @param {String} type - The type of input to create.
+ *
+ * return {void}
  */
 function addFormTextInput(parent, type) {
   const formGroup = addElement(parent, "div", ["form-group"]);
@@ -563,11 +630,17 @@ function addFormTextInput(parent, type) {
   input.name = typeIdFor;
 }
 
+/**
+ * Submit the form data to the Web3Forms API.
+ * This is a recreation of the form from Web3Forms but with proper WAVE compliance.
+ *
+ * return {void}
+ */
 function submitForm() {
   const form = document.getElementById("contact-form");
   const result = document.getElementById("result");
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", function(e) {
     e.preventDefault();
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
@@ -595,7 +668,7 @@ function submitForm() {
         console.log(error);
         result.innerHTML = "Something went wrong!";
       })
-      .then(function () {
+      .then(function() {
         form.reset();
         setTimeout(() => {
           result.style.display = "none";
@@ -604,6 +677,12 @@ function submitForm() {
   });
 }
 
+/**
+ * Most sections are similar, this provides a starting point for each section
+ * @param {HTMLElement} parent - The parent element to append the section to.
+ * @param {String} sectionName - The name of the section.
+ * return {Object} - The elements of the section. (h2, span, container, row, elem)
+ */
 function sectionTemplate(parent, sectionName) {
   let cssName = sectionName.toLowerCase();
   cssName = cssName.replace(/\s+/g, "-"); // Fixes the issue with "Previous Work"
@@ -639,29 +718,46 @@ function sectionTemplate(parent, sectionName) {
 
 /* Helper Functions */
 
-/*
+/**
  * Print the import data to the console.
  * Used for debugging purposes.
  */
 function logImportData() {
-  console.log(title);
-  console.log(sections);
-  console.log(workExperience);
-  console.log(projects);
-  console.log("Public Email Key: " + publicAccessKey);
+  console.log(TITLE);
+  console.log(SECTIONS);
+  console.log(WORK_EXPERIENCE);
+  console.log(PROJECTS);
+  console.log("Public Email Key: " + PUBLIC_ACCESS_KEY);
 }
 
+/**
+ * Create an element with the given tag and classes.
+ * Does not add it to the DOM immediately.
+ * @param {String} tag - The tag of the element to create.
+ * @param {Array} classes - The classes to add to the element.
+ * return {HTMLElement} - The created element.
+ */
 function createElement(tag, classes = []) {
   const element = document.createElement(tag);
   if (classes.length > 0) element.classList.add(...classes);
   return element;
 }
 
+/**
+ * Add an element to the parent element with the given tag and classes.
+ * Immediately appends the element to the parent.
+ * If the parent is in the DOM, the element will be as well.
+ *
+ * @param {HTMLElement} parent - The parent element to append the element to.
+ * @param {String} tag - The tag of the element to create.
+ * @param {Array} classes - The classes to add to the element.
+ *
+ * return {HTMLElement} - The created element.
+ */
 function addElement(parent, tag, classes = []) {
   const element = createElement(tag, classes);
   parent.appendChild(element);
   return element;
 }
 
-logImportData();
 main();
