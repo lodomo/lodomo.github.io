@@ -31,9 +31,12 @@
   --checker-size: 5rem;
 }
 
+.silkscreen {
+  font-family: "Silkscreen", sans-serif;
+}
+
 body {
-  font-family: "Coolvetica", sans-serif;
-  font-size: 1.5em;
+  font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
   box-sizing: border-box;
 }
@@ -44,8 +47,18 @@ h1 {
   font-size: 0px;
 }
 
-h2 {
+h2,
+.nav-link,
+.btn-primary {
+  font-family: "Coolvetica", sans-serif;
   font-weight: 500;
+}
+
+.projects-heading {
+  text-align: center;
+}
+
+p {
 }
 
 .hide-sm {
@@ -61,12 +74,13 @@ h2 {
 }
 
 .section-top {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 10em;
 }
 
 .previous-work {
   color: var(--screen-dark);
   background-color: var(--screen-beige);
+  font-size: 1.2rem;
 }
 
 .previous-work-font {
@@ -155,15 +169,10 @@ h2 {
 .okeska h2,
 .okeska h3 {
   /* Silkscreen font */
-  font-family: "Silkscreen", sans-serif;
   display: block;
   margin: 0;
   font-size: 1em;
   z-index: 1000;
-}
-
-.okeska h2 {
-  margin-top: -1.5rem;
 }
 
 .okeska h3 {
@@ -175,6 +184,13 @@ h2 {
 .heading-bg-dark {
   padding: 0 0.25rem;
   background-color: var(--dark);
+}
+
+.about-heading,
+.contact-heading {
+  font-size: 1.5em;
+  margin-bottom: -1.5rem;
+  z-index: 1000;
 }
 
 .about-p {
@@ -208,6 +224,15 @@ h2 {
   animation: jiggle 0.5s;
 }
 
+.offset-left {
+  margin-left: -12rem;
+}
+
+.max-400 {
+  display: block;
+  min-width: 10px;
+  max-width: 400px;
+}
 
 /* Animate background to move down and right forever */
 @keyframes moveBackground {
@@ -224,13 +249,13 @@ h2 {
     transform: rotate(0deg);
   }
   25% {
-    transform: rotate(10deg);
+    transform: rotate(5deg);
   }
   50% {
-    transform: rotate(-10deg);
+    transform: rotate(-5deg);
   }
   75% {
-    transform: rotate(10deg);
+    transform: rotate(5deg);
   }
   100% {
     transform: rotate(0deg);

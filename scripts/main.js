@@ -1,4 +1,11 @@
-import { title, sections, about, workExperience, projects } from "./data.mjs";
+import {
+  title,
+  sections,
+  about,
+  workExperience,
+  projects,
+  publicAccessKey,
+} from "./data.mjs";
 
 /*
  * Render the content of the website
@@ -51,12 +58,37 @@ function renderFooter(title) {
   );
   const footerRow = addElement(footer, "div", ["row"]);
   const spacer = addElement(footerRow, "div", ["col-md-4"]);
-  const socials = addElement(footerRow, "div", ["col-md-4"]);
+  const socials = addElement(footerRow, "div", [
+    "col-md-4",
+    "d-flex",
+    "align-items-center",
+    "justify-content-center",
+  ]);
 
-  const bluesky = addSocialButton(socials, "https://bsky.app/profile/lodomo.dev", "nf-fae-butterfly");
-  const email = addSocialButton(socials, "mailto:lodomo@lodomo.dev", "nf-md-email");
-  const linkedin = addSocialButton(socials, "https://linkedin.com/in/ldmoon", "nf-dev-linkedin");
-  const github = addSocialButton(socials, "https://github.com/lodomo", "nf-dev-github");
+  const bluesky = addSocialButton(
+    socials,
+    "https://bsky.app/profile/lodomo.dev",
+    "nf-fae-butterfly",
+    "Bluesky Profile",
+  );
+  const email = addSocialButton(
+    socials,
+    "mailto:lodomo@lodomo.dev",
+    "nf-md-email",
+    "Email Lodomo",
+  );
+  const linkedin = addSocialButton(
+    socials,
+    "https://linkedin.com/in/ldmoon",
+    "nf-dev-linkedin",
+    "LinkedIn Profile",
+  );
+  const github = addSocialButton(
+    socials,
+    "https://github.com/lodomo",
+    "nf-dev-github",
+    "GitHub Profile",
+  );
 
   const copyright = addElement(footerRow, "div", ["col-md-4"]);
   const footerImg = addElement(copyright, "img", ["p-0", "m-2"]);
@@ -68,13 +100,14 @@ function renderFooter(title) {
   p.textContent = "© " + 2025 + " " + title;
 }
 
-function addSocialButton(parent, href, icon) {
+function addSocialButton(parent, href, icon, ariaLabel = "") {
   const button = addElement(parent, "div", ["socials"]);
   // const iconElement = addElement("i", ["nf", "m-2", "socials", icon]);
   const link = addElement(button, "a");
   link.href = href;
   link.target = "_blank";
   link.innerHTML = `<i class="nf m-2 socials ${icon}"></i>`;
+  link.ariaLabel = ariaLabel;
   return;
 }
 
@@ -96,7 +129,7 @@ function renderNavbar(header, title, sections) {
     "fixed-top",
     "navbar-dark",
     "bg-dark",
-    "p-3",
+    "p-2",
   ]);
 
   const navbarSubContainer = addElement(navbar, "div", ["container"]);
@@ -132,7 +165,7 @@ function renderNavbar(header, title, sections) {
   sections.forEach((item) => {
     const listItem = addElement(list, "li", "", ["nav-item"]);
     listItem.id = item.toLowerCase() + "-nav";
-    const link = addElement(listItem, "a", ["nav-link", "h-100", "fs-3"], item);
+    const link = addElement(listItem, "a", ["nav-link", "h-100", "fs-4"], item);
     let href = item.toLowerCase();
     link.textContent = item;
     href = href.replace(/\s+/g, "-"); // Fixes the issue with "Previous Work"
@@ -161,6 +194,7 @@ function renderHome(main, title) {
   const home = addElement(homeRow, "div", [
     "jumbotron",
     "jumbotron-fluid",
+    "p-0",
     "vh-100",
     "home",
     "black",
@@ -198,8 +232,8 @@ function renderAbout(main) {
   const section = sectionTemplate(main, "About");
   section.container.classList.add("pb-4");
 
-  section.row.classList.add("okeska", "mt-4");
-  section.span.classList.add("heading-bg-dark");
+  section.span.classList.add("heading-bg-dark", "silkscreen");
+  section.elem.classList.add("p-3", "okeska");
 
   for (let i = 0; i < about.length; i++) {
     const p = addElement(section.elem, "p");
@@ -303,11 +337,13 @@ function renderProjects(main) {
 
   const container = addElement(section.elem, "div", ["container", "p-1"]);
 
-  let currentRow = null;
+  let currentRow = addElement(container, "div", [
+    "row",
+    "align-items-stretch",
+    gap,
+    rowMargin,
+  ]);
   for (let i = 0; i < projects.length; i++) {
-    if (i % 2 === 0) {
-      currentRow = addElement(container, "div", ["row", "align-items-stretch", gap, rowMargin]);
-    }
     addProjectCard(currentRow, projects[i]);
   }
 }
@@ -331,20 +367,23 @@ function addProjectCard(parent, data) {
 
   const imgPath = "/assets/project-images/";
 
-  const colBreak = "col-lg-6";
   const cardPadding = "p-2";
   const cardCorner = "rounded-3";
 
-  const card = addElement(parent, "div", ["d-flex", colBreak]);
+  const card = addElement(parent, "div", ["d-flex", "col-lg-6", "col-xl-4"]);
   const cardData = addElement(card, "div", [
     cardPadding,
     cardCorner,
     "container-fluid",
     "okeska",
+    "position-relative",
   ]);
 
   const cardTitle = addElement(cardData, "h3", ["relative"]);
-  const cardSubSpan = addElement(cardTitle, "span", ["heading-bg-dark"]);
+  const cardSubSpan = addElement(cardTitle, "span", [
+    "silkscreen",
+    "heading-bg-dark",
+  ]);
   cardSubSpan.textContent = data[title];
 
   // Row with image and description.
@@ -352,16 +391,31 @@ function addProjectCard(parent, data) {
   const cardImg = addElement(cardImgRow, "img", ["project-img"]);
   cardImg.src = imgPath + data[img];
   cardImg.alt = data[imgAlt];
-  const cardDescRow = addElement(cardData, "div");
+  const cardDescRow = addElement(cardData, "div", ["row", "p-2"]);
   const cardDesc = addElement(cardDescRow, "p");
   cardDesc.textContent = data[description];
 
-  // Row with buttons.
-  const cardButtonRow = addElement(cardData, "div", ["row", "p-2"]);
+  const spacer = addElement(cardData, "div", ["mt-5"]);
+  spacer.textContent = " ";
 
+  // Row with buttons.
+  const cardButtonRow = addElement(cardData, "div", [
+    "row",
+    "m-1",
+    "p-2",
+    "position-absolute",
+    "bottom-0",
+    "start-0",
+    "end-0",
+  ]);
 
   if (data[visit]) {
-    const visitButton = projectCardButton(cardButtonRow, data[visit], "Visit", "nf-md-link");
+    const visitButton = projectCardButton(
+      cardButtonRow,
+      data[visit],
+      "Visit",
+      "nf-md-link",
+    );
   }
 
   if (data[phone]) {
@@ -372,25 +426,51 @@ function addProjectCard(parent, data) {
 
     const phoneText = "Call " + phoneFormatted;
     const href = "tel:" + "+1" + data[phone];
-    const phoneButton = projectCardButton(cardButtonRow, href, phoneText, "nf-fa-phone");
+    const phoneButton = projectCardButton(
+      cardButtonRow,
+      href,
+      phoneText,
+      "nf-fa-phone",
+    );
   }
 
   if (data[sourceCode]) {
-    const sourceCodeButton = projectCardButton(cardButtonRow, data[sourceCode], "Source", "nf-cod-github");
+    const sourceCodeButton = projectCardButton(
+      cardButtonRow,
+      data[sourceCode],
+      "Source",
+      "nf-cod-github",
+    );
   }
 
   if (data[download]) {
-    const downloadButton = projectCardButton(cardButtonRow, data[download], "Download", "nf-oct-download");
+    const downloadButton = projectCardButton(
+      cardButtonRow,
+      data[download],
+      "Download",
+      "nf-oct-download",
+    );
   }
 
   if (data[playBrowser]) {
-    const playButton = projectCardButton(cardButtonRow, data[playBrowser], "Play", "nf-md-controller_classic");
+    const playButton = projectCardButton(
+      cardButtonRow,
+      data[playBrowser],
+      "Play",
+      "nf-md-controller_classic",
+    );
     playButton.classList.add("d-none", "d-lg-block");
   }
 }
 
 function projectCardButton(parent, href, text, nfIcon) {
-  const button = addElement(parent, "a", ["btn", "btn-primary", "fs-4", "m-1", "col"]);
+  const button = addElement(parent, "a", [
+    "btn",
+    "btn-primary",
+    "fs-4",
+    "m-1",
+    "col",
+  ]);
   button.href = href;
   const icon = addElement(button, "i", ["nf", "m-2", nfIcon]);
   const span = addElement(button, "span");
@@ -402,9 +482,125 @@ function projectCardButton(parent, href, text, nfIcon) {
 function renderContact(main) {
   const section = sectionTemplate(main, "Contact");
 
-  const p = addElement(section.elem, "p");
-  p.textContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  section.container.classList.add("pb-4");
+  section.h2.classList.add("mx-auto", "text-center");
+  section.span.classList.add("heading-bg-dark", "silkscreen", "offset-left");
+  section.elem.classList.add("p-3", "okeska", "container", "max-400");
+
+  const form = addElement(section.elem, "form");
+  form.id = "contact-form";
+  form.method = "POST";
+
+  const accessKey = addElement(form, "input", ["form-control", "mb-3"]);
+  accessKey.type = "hidden";
+  accessKey.name = "access_key";
+  accessKey.value = publicAccessKey;
+
+  addFormTextInput(form, "Name");
+  addFormTextInput(form, "Email");
+  addFormTextInput(form, "Subject");
+
+  /* Special for Message Input */
+  const message = addElement(form, "div", ["form-group"]);
+  const messageLabel = addElement(message, "label");
+  messageLabel.htmlFor = "message";
+  messageLabel.textContent = "Message";
+  const messageInput = addElement(message, "textarea", [
+    "form-control",
+    "mb-2",
+  ]);
+  messageInput.id = "message";
+  messageInput.required = true;
+  messageInput.name = "message";
+
+  const botCheck = addElement(form, "input", ["form-check-input", "hidden"]);
+  botCheck.type = "checkbox";
+  botCheck.name = "botcheck";
+  botCheck.style.display = "none";
+
+  // Submit and Reset Buttons
+  const buttonRow = addElement(form, "div", ["row", "g-3", "p-2"]);
+  const submitButton = addElement(buttonRow, "button", [
+    "btn",
+    "btn-primary",
+    "col",
+  ]);
+  submitButton.type = "submit";
+  submitButton.textContent = "Submit";
+  addElement(buttonRow, "div", ["col-1"]);
+  const resetButton = addElement(buttonRow, "button", [
+    "btn",
+    "btn-secondary",
+    "col",
+  ]);
+  resetButton.type = "reset";
+  resetButton.textContent = "Reset";
+
+  const result = addElement(form, "div", ["row", "p-2"]);
+  result.id = "result";
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitForm();
+  });
+}
+
+/**
+ * Create a text input and the corresponding label.
+ * Works for text, email, password, and date inputs.
+ */
+function addFormTextInput(parent, type) {
+  const formGroup = addElement(parent, "div", ["form-group"]);
+  const label = addElement(formGroup, "label");
+  const typeIdFor = type.toLowerCase();
+  label.htmlFor = typeIdFor;
+  label.textContent = type;
+  const input = addElement(formGroup, "input", ["form-control", "mb-2"]);
+  input.type = typeIdFor;
+  input.id = typeIdFor;
+  input.required = true;
+  input.name = typeIdFor;
+}
+
+function submitForm() {
+  const form = document.getElementById("contact-form");
+  const result = document.getElementById("result");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+    result.innerHTML = "Sending...";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          result.innerHTML = "Message Sent!";
+        } else {
+          console.log(response);
+          result.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(() => {
+          result.style.display = "none";
+        }, 3000);
+      });
+  });
 }
 
 function sectionTemplate(parent, sectionName) {
@@ -429,7 +625,9 @@ function sectionTemplate(parent, sectionName) {
   ]);
   row.id = cssName;
 
-  const h2 = addElement(row, "h2");
+  let headingClass = sectionName.toLowerCase().replace(/\s+/g, "-");
+  headingClass = headingClass + "-heading";
+  const h2 = addElement(row, "h2", [headingClass]);
   const span = addElement(h2, "span");
   span.textContent = sectionName;
 
@@ -449,6 +647,7 @@ function logImportData() {
   console.log(sections);
   console.log(workExperience);
   console.log(projects);
+  console.log("Public Email Key: " + publicAccessKey);
 }
 
 function createElement(tag, classes = []) {

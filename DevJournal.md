@@ -215,6 +215,7 @@ So for the projects I have a few functions:
 "renderProjects" will then run "projectCards" and set the cards to the page.
 
 ## DM API
+
 ### March 11th 2025
 
 In the lecture today, Vercel was mentioned. I decided to test that out to create my
@@ -238,16 +239,17 @@ Kinda bummed, I was really excited about that feature.
 WHOOPS.
 
 ## Module - Other
+
 ### Match 12th 2025
 
 I wanted to split my data out from my javascript file. I turned the "main.js" into a module
-and then all the data is going to be in their own .mjs files. 
+and then all the data is going to be in their own .mjs files.
 
 I'm using this as a guide to figure this out: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 
 I feel like this isn't the best way to do it? but using "fetch" doesn't make sense either since it's all local to the server.
 
-Adding in my games isn't going to be possible, I don't think. I might not have time to get the PDF generator working either. 
+Adding in my games isn't going to be possible, I don't think. I might not have time to get the PDF generator working either.
 Hopefully these modules, animations, and the jumbotron will be enough learned outside of class.
 
 Also that "vercel" thing was a bust. I'm going to have to figure out how to get the form to work without it.
@@ -255,13 +257,43 @@ Also that "vercel" thing was a bust. I'm going to have to figure out how to get 
 I've got 2 full days dedicated to this project left, time to get it done.
 
 ## NerdFonts!
+
 ### March 12th 2025
 
 Ok I figured out another thing to add that was from outside of the scope of the class.
-I added in "Nerd Fonts" from https://www.nerdfonts.com to get some icons for the buttons. 
+I added in "Nerd Fonts" from https://www.nerdfonts.com to get some icons for the buttons.
 
 I'm going to call the projects section done. It was incredibly frustrating to get the cards to all fill
 the row. I think I finally got it to work. I used https://getbootstrap.com/docs/5.0/utilities/flex/ and a mix
 of ChatGPT to find the right combination of classes, but the buttons don't go to the bottom like how I want them to.
 
 I'm going to call it done for now, and move on to the contact section.
+
+## Just kidding, Those button infuriate me.
+
+### March 12th 2025
+
+I went back and fixed the buttons so they're on the bottom. I'm glad I did it looks a lot better.
+The cards now have 3 break points. 1 across, 2 across, and 3 across. I'm really happy with how it turned out.
+
+I'm going to call the projects section done for real this time.
+
+I also went through and fixed the font sizes, some were too big and some were too small.
+There's officially 4 fonts on the page, and I'm happy with how they all look.
+
+Coolvetica for the navbar and buttons. Silkscreen for the "okeska" titles. Garamond for the resume. DM Sans for the rest.
+
+## Email API
+### March 12th 2025
+
+I found a website called https://web3forms.com/ that will let me send emails from the site.
+It gives you a public API key that is safe to expose, and I can use that to send myself an email.
+It's no more dangerous to expose than my email address.
+
+I'll be using their prototype code to get it working, and polish it to look similar to the starships
+form, but with my flair.
+
+Update: 11:28pm
+The form works!!!
+
+Now all that's left is to clean up the code, add more comments and make the video...

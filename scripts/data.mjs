@@ -9,8 +9,11 @@ export const sections = [
 ];
 
 export const about = [
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies.",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies. Nullam nec purus nec nunc tincidunt ultricies.",
+  "I'm a dad, a nerd, a builder, and a problem-solver. Whether it’s coding, gaming, or tackling hands-on projects, I love figuring out how things work and making them better. Before dedicating my time to software, I spent nine years in the U.S. Navy, earning the rank of First Class Petty Officer and achieving my Master Training Specialist certification. That experience taught me leadership, discipline, and how to break down complex problems. Now, I’m wrapping up my Computer Science degree at Portland State University, set to graduate in June 2025.",
+  "I'm passionate about creating things that bring fun into the world. I've won awards for my game design and development, and I'm always looking for new ways to innovate. I have a strong ethical compass. Technology should make life better for everyone.",
+  "Exploiting users is not a business model.",
+  "Manipulating players is not game design.",
+  "Technology should be fun, fair, and inclusive.",
 ];
 
 export const workExperience = [
@@ -28,8 +31,7 @@ export const workExperience = [
   {
     company: "U.S. Navy",
     location: "Point Loma, CA / Norfolk, VA / Yokosuka, JP",
-    role:
-      "Petty Officer First Class - Lead Petty Officer - Master Training Specialist",
+    role: "Petty Officer First Class - Lead Petty Officer - Master Training Specialist",
     date: "Dec 2018-Jul 2022",
     bullets: [
       "Designed, developed, and created a Microsoft Office based solution (Word, Excel, & Outlook) for tracking personnel training, scheduling classroom availability for instructor Sonar Technicians, and all incoming Sonar Technicians for the entire US Navy.",
@@ -89,6 +91,7 @@ export const projects = [
     description:
       "The year is 208X. You've just been recruited by the Code Samurai, an elite group of renegades with a mission to dismantle the corrupt RONIN Crime Syndicate. After a major operation, you're tasked with handling the return of your team. But something's wrong. Instead of the five expected Samurai, fifteen figures are at your doorstep, all claiming to be on your side. Can you figure out who is friend, and who is foe? This game requires NO download, NO install, NO registration, NO payment, NO ads, and NO tracking of ANY kind.",
     img: "neon-haven.png",
+    imgAlt: "Text that says Neon Haven, and a neon city scape",
     phone: "3618801802",
   },
   {
@@ -96,6 +99,7 @@ export const projects = [
     description:
       "An open source initiative to help anyone create complex immersive escape room experience. Currently in development, not ready for use.",
     img: "escape-wright.png",
+    imgAlt: "A blue star logo with the text 'Escape Wright'",
     sourceCode: "https://git.lodomo.dev/escapewright",
   },
   {
@@ -103,6 +107,7 @@ export const projects = [
     description:
       "Boulder Mage and the Eternal Nightmare is a proof of concept of a game currently in development by Lodomo.Dev. This game was 2nd place in the LOSPEC LTRO-1 GameJam. I am very proud of this game.",
     img: "boulder-mage.png",
+    imgAlt: "Video game cover art for Boulder Mage and the Eternal Nightmare",
     download: "https://lodomo.itch.io/bouldermagenightmare",
     playBrowser: "https://lospec.com/games/lospec-jam-1",
     sourceCode: "https://git.lodomo.dev/bmaten",
@@ -112,6 +117,8 @@ export const projects = [
     description:
       "Created for iOS, Android, Linux, and Windows, Don't Eat Poison is a simple game where you are a mindless pig who must avoid eating poison. The trick? He's allergic to a random poison fruit each life. Unlock costumes, compete for high scores, and maybe one day you'll be a merpig. Note: Sorry, this is no longer available on any app store.",
     img: "dont-eat-poison.png",
+    imgAlt:
+      "A pixel pig with the text 'Don't Eat Poison' on a purple background",
     download: "https://lodomo.itch.io/dont-eat-poison",
   },
   {
@@ -119,6 +126,7 @@ export const projects = [
     description:
       "A text based adventure where you're unfairly thrown into a dungeon. Will you escape? Will you die? Will you rob a mouse to save yourself? Who knows!",
     img: "peasants-in-a-dungeon.png",
+    imgAlt: "Pixelated text that says 'Peasants in a Dungeon'",
     download: "https://lodomo.itch.io/peasants-in-a-dungeon",
     sourceCode: "https://git.lodomo.dev/piad",
   },
@@ -127,6 +135,8 @@ export const projects = [
     description:
       "What if we could figure out where things are going? Trajectory Oracle is an experiment that combines machine learning with YOLO object detection to predict the trajectory of objects in a video. Does it work? Sometimes. Was it fun to make? Absolutely.",
     img: "trajectory-oracle.png",
+    imgAlt:
+      "Different colored lines on a white background, showing trajectory predictions",
     sourceCode: "https://git.lodomo.dev/trajorc",
   },
   {
@@ -134,18 +144,24 @@ export const projects = [
     description:
       "What if the moon fell into the sea? What if humanity was compelled to conquer it? What if you... succeeded? Text-Based Adventure. Full GUI version in the works.",
     img: "lunasea.png",
+    imgAlt:
+      "Logo for the video game LunaSea, pixelated moon and waves in the background",
     sourceCode: "https://git.lodomo.dev/lunasea",
   },
   {
     title: "Variable Boot Device",
-    description: "This project provides IT professionals with an open-source solution to turn a Raspberry Pi into a fully functional boot device for their custom operating systems while preserving the Pi’s full capabilities. Additionally, it doubles as a portable flash drive, ensuring flexibility and efficiency in system deployment and maintenance.",
+    description:
+      "This project provides IT professionals with an open-source solution to turn a Raspberry Pi into a fully functional boot device for their custom operating systems while preserving the Pi’s full capabilities. Additionally, it doubles as a portable flash drive, ensuring flexibility and efficiency in system deployment and maintenance.",
     img: "variable-boot-device.png",
+    imgAlt: "A pixelated rasberry pi logo with the PSU logo on top",
     sourceCode: "https://git.lodomo.dev/vbd",
   },
   {
     title: "Neovim Theme: Orion",
-    description: "A light-mode low-saturation theme for Neovim / Terminal to help easy eye strain.",
+    description:
+      "A light-mode low-saturation theme for Neovim / Terminal to help easy eye strain.",
     img: "orion.png",
+    imgAlt: "A color palette with big bold text that says 'Orion'",
     sourceCode: "https://git.lodomo.dev/orion",
   },
   {
@@ -153,6 +169,9 @@ export const projects = [
     description:
       "MERN Stack based chat application. This is a proof of concept for a chat application that uses the MERN stack. It is not intended for production use.",
     img: "messengern.png",
+    imgAlt: "A text bubble logo with the text 'Messengern'",
     sourceCode: "https://git.lodomo.dev/mern",
   },
 ];
+
+export const publicAccessKey = "3165676f-025f-44a3-9adc-40685f72c617";
