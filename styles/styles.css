@@ -31,6 +31,10 @@
   --checker-size: 5rem;
 }
 
+.section-top {
+  scroll-margin-top: 4.5rem !important;
+}
+
 .silkscreen {
   font-family: "Silkscreen", sans-serif;
 }
@@ -58,9 +62,6 @@ h2,
   text-align: center;
 }
 
-p {
-}
-
 .hide-sm {
   display: none;
 }
@@ -71,10 +72,6 @@ p {
   background-repeat: repeat;
   background-size: var(--checker-size);
   animation: moveBackground 8s linear infinite;
-}
-
-.section-top {
-  scroll-margin-top: 10em;
 }
 
 .previous-work {

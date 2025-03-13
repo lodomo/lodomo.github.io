@@ -517,7 +517,8 @@ function renderContact(main) {
   botCheck.type = "checkbox";
   botCheck.name = "botcheck";
   botCheck.style.display = "none";
-
+  botCheck.ariaLabel = "I am not a robot";
+  
   // Submit and Reset Buttons
   const buttonRow = addElement(form, "div", ["row", "g-3", "p-2"]);
   const submitButton = addElement(buttonRow, "button", [

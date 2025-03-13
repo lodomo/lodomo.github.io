@@ -306,4 +306,11 @@ Now all that's left is to clean up the code, add more comments and make the vide
 I woke up and checked what the site looks like when it's pushed compared to what it looks like on live-server.
 Every single picture is broken.
 
-I thought I was almost done...
+Update: I added the assets to gitignore to clean up my file-tree, and I just needed to remove it... So we're all good.
+
+I got the scroll working properly, looks like bootstrap takes over the scroll offset, so I set an "important" to the CSS
+to get the scroll offset to work properly. 
+
+I will be spending the rest of my time cleaning up the code, doing my WAVE checks, and checking for any deadends. 
+
+Home stretch!!
