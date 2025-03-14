@@ -180,7 +180,7 @@ export const projects = [
   {
     title: "Neovim Theme: Orion",
     description:
-      "A light-mode low-saturation theme for Neovim / Terminal to help easy eye strain.",
+      "A light-mode low-saturation theme for Neovim / Terminal to help ease eye strain.",
     img: "orion.png",
     imgAlt: "A color palette with big bold text that says 'Orion'",
     sourceCode: "https://git.lodomo.dev/orion",
